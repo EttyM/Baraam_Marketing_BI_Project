@@ -1,0 +1,497 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/3/2021 6:40:57 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ETTYM"
+  DTS:CreatorName="ETTYM\Lenovo-PC"
+  DTS:DTSID="{A4CAFD93-A11B-411C-8D30-34AC659CC643}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="MRR_Source_Holidays"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{103480FC-BBEB-4A46-9FAD-CA0FD7511F70}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Holidays XLS Source File]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{449B051A-9F49-4F87-B081-F5A94172BF75}"
+      DTS:ObjectName="Holidays XLS Source File">
+      <DTS:PropertyExpression
+        DTS:Name="ExcelFilePath">@[$Project::PP_Source_File] + "holydays.xls"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Lenovo-PC\Desktop\BI\Final Project\Documents\SourceFiles\holydays.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create &amp; Load MRR_Holidays"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{DF0034EB-8BDC-436C-9FDA-1E37846C4E55}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create &amp; Load MRR_Holidays"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Holidays XSL Source File"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">גיליון1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Holidays XLS Source File]"
+                  connectionManagerRefId="Package.ConnectionManagers[Holidays XLS Source File]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].Columns[שנה]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].ExternalColumns[שנה]"
+                      lineageId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].Columns[שנה]"
+                      name="שנה"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].Columns[תקופה ]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].ExternalColumns[תקופה ]"
+                      length="255"
+                      lineageId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].Columns[תקופה ]"
+                      name="תקופה "
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].Columns[התחלה ]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].ExternalColumns[התחלה ]"
+                      lineageId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].Columns[התחלה ]"
+                      name="התחלה "
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].Columns[סיום]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].ExternalColumns[סיום]"
+                      lineageId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].Columns[סיום]"
+                      name="סיום"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].ExternalColumns[שנה]"
+                      dataType="r8"
+                      name="שנה" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].ExternalColumns[תקופה ]"
+                      dataType="wstr"
+                      length="255"
+                      name="תקופה " />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].ExternalColumns[התחלה ]"
+                      dataType="date"
+                      name="התחלה " />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].ExternalColumns[סיום]"
+                      dataType="date"
+                      name="סיום" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Error Output].Columns[שנה]"
+                      dataType="r8"
+                      lineageId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Error Output].Columns[שנה]"
+                      name="שנה" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Error Output].Columns[תקופה ]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Error Output].Columns[תקופה ]"
+                      name="תקופה " />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Error Output].Columns[התחלה ]"
+                      dataType="date"
+                      lineageId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Error Output].Columns[התחלה ]"
+                      name="התחלה " />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Error Output].Columns[סיום]"
+                      dataType="date"
+                      lineageId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Error Output].Columns[סיום]"
+                      name="סיום" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="MRR_Holidays"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[MRR_Holidays]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">ROWS_PER_BATCH = 10000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">1000000</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Connections[OleDbConnection]"
+                  connectionManagerID="{841AE9A8-9773-4302-9CC9-CFE643E5CF84}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MRR_BaramMarketing]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Inputs[OLE DB Destination Input].Columns[שנה]"
+                      cachedDataType="r8"
+                      cachedName="שנה"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].Columns[שנה]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Inputs[OLE DB Destination Input].Columns[תקופה ]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="תקופה "
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Inputs[OLE DB Destination Input].ExternalColumns[Period]"
+                      lineageId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].Columns[תקופה ]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Inputs[OLE DB Destination Input].Columns[התחלה ]"
+                      cachedDataType="date"
+                      cachedName="התחלה "
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                      lineageId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].Columns[התחלה ]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Inputs[OLE DB Destination Input].Columns[סיום]"
+                      cachedDataType="date"
+                      cachedName="סיום"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
+                      lineageId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output].Columns[סיום]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      dataType="r8"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Inputs[OLE DB Destination Input].ExternalColumns[Period]"
+                      dataType="wstr"
+                      length="255"
+                      name="Period" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                      dataType="dbTimeStamp"
+                      name="StartDate" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
+                      dataType="dbTimeStamp"
+                      name="EndDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Create &amp; Load MRR_Holidays.Paths[Excel Source Output]"
+              endId="Package\Create &amp; Load MRR_Holidays\MRR_Holidays.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate table MRR_Holidays"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{631F6284-C90B-4E3E-BAEC-E64BAE0848D9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate table MRR_Holidays"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{841AE9A8-9773-4302-9CC9-CFE643E5CF84}"
+          SQLTask:SqlStatementSource="Truncate table MRR_Holidays" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{2F2F0C9C-738F-457E-AB97-1F0255D95F8D}"
+      DTS:From="Package\Truncate table MRR_Holidays"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Create &amp; Load MRR_Holidays" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="217.333333333334,42.6666666666667"
+          Id="Package\Create &amp; Load MRR_Holidays"
+          TopLeft="233.749996516854,154.049997245371" />
+        <NodeLayout
+          Size="221.333333333334,43.3333333333334"
+          Id="Package\Truncate table MRR_Holidays"
+          TopLeft="232.49999653548,60.4499989190698" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="342.791663192834,103.783332252403">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.2666649929683"
+              Start="0,0"
+              End="0,42.7666649929683">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.7666649929683" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Create &amp; Load MRR_Holidays">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="194,42.6666666666667"
+          Id="Package\Create &amp; Load MRR_Holidays\MRR_Holidays"
+          TopLeft="278.749995846301,180.699996768832" />
+        <NodeLayout
+          Size="194.666666666667,42.6666666666667"
+          Id="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File"
+          TopLeft="280.624995818362,89.0499984076619" />
+        <EdgeLayout
+          Id="Package\Create &amp; Load MRR_Holidays.Paths[Excel Source Output]"
+          TopLeft="376.854162498998,131.716665074329">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.9833316945036"
+              Start="0,0"
+              End="0,41.4833316945036">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.4833316945036" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Create &amp; Load MRR_Holidays\Holidays XSL Source File">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Create &amp; Load MRR_Holidays\MRR_Holidays">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

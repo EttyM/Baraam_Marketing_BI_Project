@@ -1,0 +1,492 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/4/2021 11:03:55 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ETTYM"
+  DTS:CreatorName="ETTYM\Lenovo-PC"
+  DTS:DTSID="{96528794-62F3-423E-ADF3-C67B86A1152D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="MRR_Source_SalesTargets"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{8A9C6D63-99D2-450D-BE2B-1DBC5AE7F1F2}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SalesTargets XLS Source File]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{C3E13E70-279E-466D-A437-97DE2F01D001}"
+      DTS:ObjectName="SalesTargets XLS Source File">
+      <DTS:PropertyExpression
+        DTS:Name="ExcelFilePath">@[$Project::PP_Source_File] + "SalesTargets.xls"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Lenovo-PC\Desktop\BI\Final Project\Documents\SourceFiles\SalesTargets.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create &amp; Load MRR_SalesTargets"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{468A7CDE-2767-456B-8AAC-C3E2F2F8BF70}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create &amp; Load MRR_SalesTargets"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="MRR_SalesTargets"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[MRR_SalesTargets]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">ROWS_PER_BATCH = 10000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">100000</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Connections[OleDbConnection]"
+                  connectionManagerID="{841AE9A8-9773-4302-9CC9-CFE643E5CF84}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MRR_BaramMarketing]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Inputs[OLE DB Destination Input].Columns[Year]"
+                      cachedDataType="r8"
+                      cachedName="Year"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Inputs[OLE DB Destination Input].Columns[Target]"
+                      cachedDataType="r8"
+                      cachedName="Target"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Inputs[OLE DB Destination Input].ExternalColumns[Target]"
+                      lineageId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].Columns[Target]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Inputs[OLE DB Destination Input].Columns[AgentCode]"
+                      cachedDataType="r8"
+                      cachedName="AgentCode"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Inputs[OLE DB Destination Input].ExternalColumns[AgentID]"
+                      lineageId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].Columns[AgentCode]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Inputs[OLE DB Destination Input].Columns[CategoryNumber]"
+                      cachedDataType="r8"
+                      cachedName="CategoryNumber"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                      lineageId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].Columns[CategoryNumber]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Inputs[OLE DB Destination Input].ExternalColumns[AgentID]"
+                      dataType="r8"
+                      name="AgentID" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                      dataType="r8"
+                      name="CategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      dataType="r8"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Inputs[OLE DB Destination Input].ExternalColumns[Target]"
+                      dataType="r8"
+                      name="Target" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="SalesTargets XSL Source File"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">YearlyTargets$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SalesTargets XLS Source File]"
+                  connectionManagerRefId="Package.ConnectionManagers[SalesTargets XLS Source File]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].Columns[AgentCode]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].ExternalColumns[AgentCode]"
+                      lineageId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].Columns[AgentCode]"
+                      name="AgentCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].Columns[CategoryNumber]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].ExternalColumns[CategoryNumber]"
+                      lineageId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].Columns[CategoryNumber]"
+                      name="CategoryNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].Columns[Year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].ExternalColumns[Year]"
+                      lineageId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].Columns[Target]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].ExternalColumns[Target]"
+                      lineageId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].Columns[Target]"
+                      name="Target"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].ExternalColumns[AgentCode]"
+                      dataType="r8"
+                      name="AgentCode" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].ExternalColumns[CategoryNumber]"
+                      dataType="r8"
+                      name="CategoryNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].ExternalColumns[Year]"
+                      dataType="r8"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output].ExternalColumns[Target]"
+                      dataType="r8"
+                      name="Target" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Error Output].Columns[AgentCode]"
+                      dataType="r8"
+                      lineageId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Error Output].Columns[AgentCode]"
+                      name="AgentCode" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Error Output].Columns[CategoryNumber]"
+                      dataType="r8"
+                      lineageId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Error Output].Columns[CategoryNumber]"
+                      name="CategoryNumber" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Error Output].Columns[Year]"
+                      dataType="r8"
+                      lineageId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Error Output].Columns[Year]"
+                      name="Year" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Error Output].Columns[Target]"
+                      dataType="r8"
+                      lineageId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Error Output].Columns[Target]"
+                      name="Target" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Create &amp; Load MRR_SalesTargets.Paths[Excel Source Output]"
+              endId="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate table MRR_SalesTargets"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{DA32F50D-C008-448A-8B79-2EC782E21351}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate table MRR_SalesTargets"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{841AE9A8-9773-4302-9CC9-CFE643E5CF84}"
+          SQLTask:SqlStatementSource="Truncate table MRR_SalesTargets" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{0B77D97E-46CD-43B2-BC41-8CDFD16A318B}"
+      DTS:From="Package\Truncate table MRR_SalesTargets"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Create &amp; Load MRR_SalesTargets" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="237.333333333334,42.6666666666667"
+          Id="Package\Create &amp; Load MRR_SalesTargets"
+          TopLeft="231.874996544793,129.349997687042" />
+        <NodeLayout
+          Size="237.333333333334,42.6666666666667"
+          Id="Package\Truncate table MRR_SalesTargets"
+          TopLeft="233.124996526167,58.4999989539385" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="351.166663202147,101.166665620605">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.1833320664366"
+              Start="0,0"
+              End="0,20.6833320664366">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.6833320664366" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Create &amp; Load MRR_SalesTargets">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="214.666666666667,42.6666666666667"
+          Id="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File"
+          TopLeft="264.374996060505,42.2499992445111" />
+        <NodeLayout
+          Size="214,42.6666666666667"
+          Id="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets"
+          TopLeft="268.124996004626,135.849997570813" />
+        <EdgeLayout
+          Id="Package\Create &amp; Load MRR_SalesTargets.Paths[Excel Source Output]"
+          TopLeft="373.416662699233,84.9166659111778">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.9333316596349"
+              Start="0,0"
+              End="0,43.4333316596349">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.4333316596349" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Create &amp; Load MRR_SalesTargets\MRR_SalesTargets">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Create &amp; Load MRR_SalesTargets\SalesTargets XSL Source File">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

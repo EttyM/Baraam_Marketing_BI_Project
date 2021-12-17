@@ -1,0 +1,14 @@
+C:\Users\Lenovo-PC\Desktop\BI\Final Project\Etty_Mardoyantz\TabularProjectSolution_Etty_M\TabularFinalProject_Etty_M\bin\Model.asdatabase
+C:\Users\Lenovo-PC\Desktop\BI\Final Project\Etty_Mardoyantz\TabularProjectSolution_Etty_M\TabularFinalProject_Etty_M\bin\Model.deploymenttargets
+C:\Users\Lenovo-PC\Desktop\BI\Final Project\Etty_Mardoyantz\TabularProjectSolution_Etty_M\TabularFinalProject_Etty_M\bin\Model.deploymentoptions
+C:\Users\Lenovo-PC\Desktop\BI\Final Project\Etty_Mardoyantz\TabularProjectSolution_Etty_M\TabularFinalProject_Etty_M\obj\Development\TabularFinalProject_Etty_M.smproj.CoreCompileInputs.cache
+C:\Users\Lenovo-PC\Desktop\BI\Final Project\Etty_Mardoyantz\TabularProjectSolution_Etty_M\TabularFinalProject_Etty_M\obj\Development\Model.asdatabase
+C:\Users\Lenovo-PC\Desktop\BI\Final Project\Etty_Mardoyantz\TabularProjectSolution_Etty_M\TabularFinalProject_Etty_M\obj\Development\Model.deploymentoptions
+C:\Users\Lenovo-PC\Desktop\BI\Final Project\Etty_Mardoyantz\TabularProjectSolution_Etty_M\TabularFinalProject_Etty_M\obj\Development\Model.deploymenttargets
+C:\Users\Lenovo-PC\Desktop\BI\Final Project\Etty_Mardoyantz\5. SSAS_TabularProjectSolution_Etty_M\TabularFinalProject_Etty_M\bin\Model.asdatabase
+C:\Users\Lenovo-PC\Desktop\BI\Final Project\Etty_Mardoyantz\5. SSAS_TabularProjectSolution_Etty_M\TabularFinalProject_Etty_M\bin\Model.deploymenttargets
+C:\Users\Lenovo-PC\Desktop\BI\Final Project\Etty_Mardoyantz\5. SSAS_TabularProjectSolution_Etty_M\TabularFinalProject_Etty_M\bin\Model.deploymentoptions
+C:\Users\Lenovo-PC\Desktop\BI\Final Project\Etty_Mardoyantz\5. SSAS_TabularProjectSolution_Etty_M\TabularFinalProject_Etty_M\obj\Development\TabularFinalProject_Etty_M.smproj.CoreCompileInputs.cache
+C:\Users\Lenovo-PC\Desktop\BI\Final Project\Etty_Mardoyantz\5. SSAS_TabularProjectSolution_Etty_M\TabularFinalProject_Etty_M\obj\Development\Model.asdatabase
+C:\Users\Lenovo-PC\Desktop\BI\Final Project\Etty_Mardoyantz\5. SSAS_TabularProjectSolution_Etty_M\TabularFinalProject_Etty_M\obj\Development\Model.deploymentoptions
+C:\Users\Lenovo-PC\Desktop\BI\Final Project\Etty_Mardoyantz\5. SSAS_TabularProjectSolution_Etty_M\TabularFinalProject_Etty_M\obj\Development\Model.deploymenttargets

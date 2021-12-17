@@ -1,0 +1,1518 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/8/2021 11:08:54 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ETTYM"
+  DTS:CreatorName="ETTYM\Lenovo-PC"
+  DTS:DTSID="{CFA0DE6A-DF90-4B45-B9B3-F66036936BFA}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="STG_DimCustomers"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{4D5A8C65-2F00-4987-AFE3-11CBC27D070C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create &amp; Load STG_DimCustomers"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{C20E47CB-4617-415B-9DAC-1243F8C0A2C0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create &amp; Load STG_DimCustomers"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Create &amp; Load STG_DimCustomer"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG_DimCustomers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">ROWS_PER_BATCH = 10000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">1000000</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Connections[OleDbConnection]"
+                  connectionManagerID="{8E292E39-2A6B-427E-B287-55183E7B623B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.STG_BaramMarketing]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                      cachedDataType="r8"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].Columns[CustomerName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CustomerName"
+                      externalMetadataColumnId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerName]"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerName]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].Columns[AgentID]"
+                      cachedDataType="r8"
+                      cachedName="AgentID"
+                      externalMetadataColumnId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[AgentID]"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[AgentID]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].Columns[AreaID]"
+                      cachedDataType="r8"
+                      cachedName="AreaID"
+                      externalMetadataColumnId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[AreaID]"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[AreaID]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].Columns[CustomerTypeID]"
+                      cachedDataType="r8"
+                      cachedName="CustomerTypeID"
+                      externalMetadataColumnId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerTypeID]"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerTypeID]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].Columns[CustomerTypeDesc]"
+                      cachedDataType="wstr"
+                      cachedLength="65"
+                      cachedName="CustomerTypeDesc"
+                      externalMetadataColumnId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerTypeDesc]"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Outputs[Lookup Match Output].Columns[CustomerTypeDesc]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].Columns[AreaName]"
+                      cachedDataType="wstr"
+                      cachedLength="65"
+                      cachedName="AreaName"
+                      externalMetadataColumnId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[AreaName]"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Outputs[Lookup Match Output].Columns[AreaName]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].Columns[AgentName]"
+                      cachedDataType="wstr"
+                      cachedLength="65"
+                      cachedName="AgentName"
+                      externalMetadataColumnId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[AgentName]"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Outputs[Lookup Match Output].Columns[AgentName]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].Columns[DC_CustomerTypeID]"
+                      cachedDataType="i2"
+                      cachedName="DC_CustomerTypeID"
+                      externalMetadataColumnId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerPaymentType]"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_CustomerTypeID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      dataType="i2"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerName]"
+                      dataType="wstr"
+                      length="512"
+                      name="CustomerName" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[AgentID]"
+                      dataType="i2"
+                      name="AgentID" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[AgentName]"
+                      dataType="wstr"
+                      length="65"
+                      name="AgentName" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[AreaID]"
+                      dataType="i2"
+                      name="AreaID" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[AreaName]"
+                      dataType="wstr"
+                      length="65"
+                      name="AreaName" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerTypeID]"
+                      dataType="i2"
+                      name="CustomerTypeID" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerTypeDesc]"
+                      dataType="wstr"
+                      length="65"
+                      name="CustomerTypeDesc" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerPaymentType]"
+                      dataType="wstr"
+                      length="22"
+                      name="CustomerPaymentType" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Handle Data types &amp; Nulls"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Inputs[Derived Column Input].Columns[CustomerID]"
+                      cachedDataType="r8"
+                      cachedName="CustomerID"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Inputs[Derived Column Input].Columns[CustomerName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CustomerName"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerName]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Inputs[Derived Column Input].Columns[CustomerPaymentTerms]"
+                      cachedDataType="r8"
+                      cachedName="CustomerPaymentTerms"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerPaymentTerms]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Inputs[Derived Column Input].Columns[AgentID]"
+                      cachedDataType="r8"
+                      cachedName="AgentID"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[AgentID]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Inputs[Derived Column Input].Columns[AreaID]"
+                      cachedDataType="r8"
+                      cachedName="AreaID"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[AreaID]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Inputs[Derived Column Input].Columns[CustomerTypeID]"
+                      cachedDataType="r8"
+                      cachedName="CustomerTypeID"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerTypeID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_CustomerID]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_CustomerID]"
+                      name="DC_CustomerID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I2)#{Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerID]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I2)CustomerID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_CustomerName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="65"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_CustomerName]"
+                      name="DC_CustomerName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,65)[REPLACENULL]([TRIM](#{Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerName]}),@[$Project::PP_Unknown_String])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,65)REPLACENULL(TRIM(CustomerName),@[$Project::PP_Unknown_String])</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_PaymentType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="65"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_PaymentType]"
+                      name="DC_PaymentType"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,65)[REPLACENULL]((DT_WSTR,10)#{Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerPaymentTerms]},@[$Project::PP_Unknown_String])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,65)REPLACENULL((DT_WSTR,10)CustomerPaymentTerms,@[$Project::PP_Unknown_String])</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_AgentID]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_AgentID]"
+                      name="DC_AgentID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I2)#{Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[AgentID]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I2)AgentID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_AreaID]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_AreaID]"
+                      name="DC_AreaID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I2)#{Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[AreaID]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I2)AreaID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_CustomerTypeID]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_CustomerTypeID]"
+                      name="DC_CustomerTypeID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I2)#{Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerTypeID]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I2)CustomerTypeID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Join MRR_Agents for Name"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  CAST([AgentID] as smallint) AS [AgentID]
+             ,CAST([AgentName] as nvarchar (65)) AS [AgentName]
+FROM [MRR_BaramMarketing].[dbo].[MRR_Agents]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT  CAST([AgentID] as smallint) AS [AgentID]
+             ,CAST([AgentName] as nvarchar (65)) AS [AgentName]
+FROM [MRR_BaramMarketing].[dbo].[MRR_Agents]) [refTable]
+where [refTable].[AgentID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="AgentID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AgentName" dataType="DT_WSTR" length="65" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_AgentID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Connections[OleDbConnection]"
+                  connectionManagerID="{841AE9A8-9773-4302-9CC9-CFE643E5CF84}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MRR_BaramMarketing]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Inputs[Lookup Input].Columns[DC_AgentID]"
+                      cachedDataType="i2"
+                      cachedName="DC_AgentID"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_AgentID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">AgentID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Outputs[Lookup Match Output].Columns[AgentName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="65"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Outputs[Lookup Match Output].Columns[AgentName]"
+                      name="AgentName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">AgentName</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Join MRR_Area for AreaName"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CAST ([AreaID] as smallint) AS  [AreaID]
+             ,CAST ([AreaName] as nvarchar (65)) [AreaName]
+FROM [MRR_BaramMarketing].[dbo].[MRR_Area]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT CAST ([AreaID] as smallint) AS  [AreaID]
+             ,CAST ([AreaName] as nvarchar (65)) [AreaName]
+FROM [MRR_BaramMarketing].[dbo].[MRR_Area]) [refTable]
+where [refTable].[AreaID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="AreaID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AreaName" dataType="DT_WSTR" length="65" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_AreaID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Connections[OleDbConnection]"
+                  connectionManagerID="{841AE9A8-9773-4302-9CC9-CFE643E5CF84}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MRR_BaramMarketing]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Inputs[Lookup Input].Columns[DC_AreaID]"
+                      cachedDataType="i2"
+                      cachedName="DC_AreaID"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_AreaID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">AreaID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Outputs[Lookup Match Output].Columns[AreaName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="65"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Outputs[Lookup Match Output].Columns[AreaName]"
+                      name="AreaName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">AreaName</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Join MRR_CustomerType for TypeDecs"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CAST([CustomerTypeID] as smallint)
+                         AS  [CustomerTypeID]
+                        ,CAST([CustomerTypeDesc] as nvarchar (65))
+	      AS [CustomerTypeDesc] 
+FROM [MRR_BaramMarketing].[dbo].[MRR_CustomerType]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT CAST([CustomerTypeID] as smallint)
+                         AS  [CustomerTypeID]
+                        ,CAST([CustomerTypeDesc] as nvarchar (65))
+	      AS [CustomerTypeDesc] 
+FROM [MRR_BaramMarketing].[dbo].[MRR_CustomerType]) [refTable]
+where [refTable].[CustomerTypeID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CustomerTypeID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CustomerTypeDesc" dataType="DT_WSTR" length="65" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_CustomerTypeID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Connections[OleDbConnection]"
+                  connectionManagerID="{841AE9A8-9773-4302-9CC9-CFE643E5CF84}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MRR_BaramMarketing]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Inputs[Lookup Input].Columns[DC_CustomerTypeID]"
+                      cachedDataType="i2"
+                      cachedName="DC_CustomerTypeID"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output].Columns[DC_CustomerTypeID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CustomerTypeID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Outputs[Lookup Match Output].Columns[CustomerTypeDesc]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="65"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Outputs[Lookup Match Output].Columns[CustomerTypeDesc]"
+                      name="CustomerTypeDesc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">CustomerTypeDesc</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="MRR_Customers"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[MRR_Customers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Connections[OleDbConnection]"
+                  connectionManagerID="{841AE9A8-9773-4302-9CC9-CFE643E5CF84}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MRR_BaramMarketing]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].ExternalColumns[CustomerName]"
+                      length="255"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerName]"
+                      name="CustomerName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerPaymentTerms]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].ExternalColumns[CustomerPaymentTerms]"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerPaymentTerms]"
+                      name="CustomerPaymentTerms"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[AgentID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].ExternalColumns[AgentID]"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[AgentID]"
+                      name="AgentID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[AreaID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].ExternalColumns[AreaID]"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[AreaID]"
+                      name="AreaID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerTypeID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].ExternalColumns[CustomerTypeID]"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].Columns[CustomerTypeID]"
+                      name="CustomerTypeID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      dataType="r8"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].ExternalColumns[CustomerName]"
+                      dataType="wstr"
+                      length="255"
+                      name="CustomerName" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].ExternalColumns[CustomerPaymentTerms]"
+                      dataType="r8"
+                      name="CustomerPaymentTerms" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].ExternalColumns[AgentID]"
+                      dataType="r8"
+                      name="AgentID" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].ExternalColumns[AreaID]"
+                      dataType="r8"
+                      name="AreaID" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output].ExternalColumns[CustomerTypeID]"
+                      dataType="r8"
+                      name="CustomerTypeID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      dataType="r8"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Error Output].Columns[CustomerName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Error Output].Columns[CustomerName]"
+                      name="CustomerName" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Error Output].Columns[CustomerPaymentTerms]"
+                      dataType="r8"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Error Output].Columns[CustomerPaymentTerms]"
+                      name="CustomerPaymentTerms" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Error Output].Columns[AgentID]"
+                      dataType="r8"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Error Output].Columns[AgentID]"
+                      name="AgentID" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Error Output].Columns[AreaID]"
+                      dataType="r8"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Error Output].Columns[AreaID]"
+                      name="AreaID" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Error Output].Columns[CustomerTypeID]"
+                      dataType="r8"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Error Output].Columns[CustomerTypeID]"
+                      name="CustomerTypeID" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Create &amp; Load STG_DimCustomers.Paths[Derived Column Output]"
+              endId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Create &amp; Load STG_DimCustomers.Paths[Lookup Match Output]"
+              endId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Create &amp; Load STG_DimCustomers.Paths[Lookup Match Output1]"
+              endId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Create &amp; Load STG_DimCustomers.Paths[Lookup Match Output2]"
+              endId="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Create &amp; Load STG_DimCustomers.Paths[OLE DB Source Output]"
+              endId="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Create &amp; Load STG_DimCustomers\MRR_Customers.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate table STG_DimCustomers"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{20733368-B969-4FB2-A94F-AA6BD7EF4916}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate table STG_DimCustomers"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8E292E39-2A6B-427E-B287-55183E7B623B}"
+          SQLTask:SqlStatementSource="truncate table STG_DimCustomers" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{4F55CB3D-9CAA-4844-9D68-9B54FF4EF1D2}"
+      DTS:From="Package\Truncate table STG_DimCustomers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Create &amp; Load STG_DimCustomers" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="243,42"
+          Id="Package\Create &amp; Load STG_DimCustomers"
+          TopLeft="268,108" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Truncate table STG_DimCustomers"
+          TopLeft="266,15" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="388.75,57">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Create &amp; Load STG_DimCustomers">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Create &amp; Load STG_DimCustomers\MRR_Customers"
+          TopLeft="285,5" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Create &amp; Load STG_DimCustomers\Handle Data types &amp; Nulls"
+          TopLeft="286,91" />
+        <EdgeLayout
+          Id="Package\Create &amp; Load STG_DimCustomers.Paths[OLE DB Source Output]"
+          TopLeft="387,47">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs"
+          TopLeft="31,174" />
+        <EdgeLayout
+          Id="Package\Create &amp; Load STG_DimCustomers.Paths[Derived Column Output]"
+          TopLeft="387,133">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-255.5,41"
+              Start="0,0"
+              End="-255.5,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="-4,20.5" />
+                  <mssgle:LineSegment
+                    End="-251.5,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-251.5,20.5"
+                    Point2="-255.5,20.5"
+                    Point3="-255.5,24.5" />
+                  <mssgle:LineSegment
+                    End="-255.5,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName"
+          TopLeft="273,174" />
+        <EdgeLayout
+          Id="Package\Create &amp; Load STG_DimCustomers.Paths[Lookup Match Output]"
+          TopLeft="232,195">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="41,0"
+              Start="0,0"
+              End="33.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="33.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-31.44138671875,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="238,42"
+          Id="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer"
+          TopLeft="289,268" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name"
+          TopLeft="509,174" />
+        <EdgeLayout
+          Id="Package\Create &amp; Load STG_DimCustomers.Paths[Lookup Match Output1]"
+          TopLeft="460,195">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="49,0"
+              Start="0,0"
+              End="41.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="41.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-27.44138671875,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Create &amp; Load STG_DimCustomers.Paths[Lookup Match Output2]"
+          TopLeft="604,216">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-196,52"
+              Start="0,0"
+              End="-196,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22"
+                    Point2="0,26"
+                    Point3="-4,26" />
+                  <mssgle:LineSegment
+                    End="-192,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-192,26"
+                    Point2="-196,26"
+                    Point3="-196,30" />
+                  <mssgle:LineSegment
+                    End="-196,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-146.19138671875,31,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Create &amp; Load STG_DimCustomers\MRR_Customers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Create &amp; Load STG_DimCustomers\Join MRR_CustomerType for TypeDecs">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Create &amp; Load STG_DimCustomers\Join MRR_Area for AreaName">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Create &amp; Load STG_DimCustomers\Create &amp; Load STG_DimCustomer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Create &amp; Load STG_DimCustomers\Join MRR_Agents for Name">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

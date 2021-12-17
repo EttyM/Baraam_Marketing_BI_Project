@@ -1,0 +1,2686 @@
+{
+  "name": "TabularFinalProject_Etty_M",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "BaraamMarketing",
+        "connectionString": "Provider=SQLNCLI11;Data Source=.;Initial Catalog=DWH_BaramMarketing;Integrated Security=SSPI;Persist Security Info=false",
+        "impersonationMode": "impersonateServiceAccount",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "DimCustomers",
+        "columns": [
+          {
+            "name": "CustomerID",
+            "dataType": "int64",
+            "sourceColumn": "CustomerID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CustomerName",
+            "dataType": "string",
+            "sourceColumn": "CustomerName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CustomerPaymentTerms",
+            "dataType": "string",
+            "sourceColumn": "CustomerPaymentTerms",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "AgentID",
+            "dataType": "int64",
+            "sourceColumn": "AgentID",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "AgentName",
+            "dataType": "string",
+            "sourceColumn": "AgentName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "AreaID",
+            "dataType": "int64",
+            "sourceColumn": "AreaID",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "AreaName",
+            "dataType": "string",
+            "sourceColumn": "AreaName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CustomerTypeID",
+            "dataType": "int64",
+            "sourceColumn": "CustomerTypeID",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "CustomerTypeDesc",
+            "dataType": "string",
+            "sourceColumn": "CustomerTypeDesc",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCustomers",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[DimCustomers].[CustomerID],[dbo].[DimCustomers].[CustomerName],[dbo].[DimCustomers].[CustomerPaymentTerms],[dbo].[DimCustomers].[AgentID],[dbo].[DimCustomers].[AgentName],[dbo].[DimCustomers].[AreaID],[dbo].[DimCustomers].[AreaName],[dbo].[DimCustomers].[CustomerTypeID],[dbo].[DimCustomers].[CustomerTypeDesc] FROM [dbo].[DimCustomers] ",
+              "dataSource": "BaraamMarketing"
+            },
+            "annotations": [
+              {
+                "name": "TableWidgetSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+                  "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+                  "  <ColumnSuggestedType />",
+                  "  <ColumnFormat />",
+                  "  <ColumnAccuracy />",
+                  "  <ColumnCurrencySymbol />",
+                  "  <ColumnPositivePattern />",
+                  "  <ColumnNegativePattern />",
+                  "  <ColumnWidths>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>CustomerID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>124</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>CustomerName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>148</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>CustomerPaymentTerms</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>213</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>AgentID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>98</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>AgentName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>122</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>AreaID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>89</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>AreaName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>113</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>CustomerTypeID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>159</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>CustomerTypeDesc</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>175</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>55</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI_Date</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>96</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnWidths>",
+                  "  <ColumnDisplayIndex>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>CustomerID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>0</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>CustomerName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>1</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>CustomerPaymentTerms</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>2</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>AgentID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>3</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>AgentName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>4</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>AreaID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>5</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>AreaName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>6</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>CustomerTypeID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>7</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>CustomerTypeDesc</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>8</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>9</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI_Date</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>10</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnDisplayIndex>",
+                  "  <ColumnFrozen />",
+                  "  <ColumnChecked>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI_Date</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnChecked>",
+                  "  <ColumnFilter />",
+                  "  <SelectionFilter />",
+                  "  <FilterParameters />",
+                  "  <IsSortDescending>false</IsSortDescending>",
+                  "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimCustomers].[CustomerID],[dbo].[DimCustomers].[CustomerName],[dbo].[DimCustomers].[CustomerPaymentTerms],[dbo].[DimCustomers].[AgentID],[dbo].[DimCustomers].[AgentName],[dbo].[DimCustomers].[AreaID],[dbo].[DimCustomers].[AreaName],[dbo].[DimCustomers].[CustomerTypeID],[dbo].[DimCustomers].[CustomerTypeDesc] FROM [dbo].[DimCustomers] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimCustomers"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "TableWidgetSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+              "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+              "  <ColumnSuggestedType />",
+              "  <ColumnFormat />",
+              "  <ColumnAccuracy />",
+              "  <ColumnCurrencySymbol />",
+              "  <ColumnPositivePattern />",
+              "  <ColumnNegativePattern />",
+              "  <ColumnWidths>",
+              "    <item>",
+              "      <key>",
+              "        <string>CustomerID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>124</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>CustomerName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>148</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>CustomerPaymentTerms</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>213</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>AgentID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>98</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>AgentName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>122</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>AreaID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>89</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>AreaName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>113</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>CustomerTypeID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>159</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>CustomerTypeDesc</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>175</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>55</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI_Date</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>96</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnWidths>",
+              "  <ColumnDisplayIndex>",
+              "    <item>",
+              "      <key>",
+              "        <string>CustomerID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>0</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>CustomerName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>1</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>CustomerPaymentTerms</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>2</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>AgentID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>3</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>AgentName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>4</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>AreaID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>5</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>AreaName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>6</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>CustomerTypeID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>7</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>CustomerTypeDesc</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>8</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>9</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI_Date</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>10</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnDisplayIndex>",
+              "  <ColumnFrozen />",
+              "  <ColumnChecked>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI_Date</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnChecked>",
+              "  <ColumnFilter />",
+              "  <SelectionFilter />",
+              "  <FilterParameters />",
+              "  <IsSortDescending>false</IsSortDescending>",
+              "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "DimInvoiceType",
+        "columns": [
+          {
+            "name": "InvoiceType",
+            "dataType": "boolean",
+            "sourceColumn": "InvoiceType",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          },
+          {
+            "name": "InvTypeDesc",
+            "dataType": "string",
+            "sourceColumn": "InvTypeDesc",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimInvoiceType",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[DimInvoiceType].* FROM [dbo].[DimInvoiceType] ",
+              "dataSource": "BaraamMarketing"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimInvoiceType].* FROM [dbo].[DimInvoiceType] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimInvoiceType"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "DimProducts",
+        "columns": [
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "sourceColumn": "ProductID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ProductName",
+            "dataType": "string",
+            "sourceColumn": "ProductName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CategoryID",
+            "dataType": "int64",
+            "sourceColumn": "CategoryID",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "CategoryName",
+            "dataType": "string",
+            "sourceColumn": "CategoryName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "SubCategoryID",
+            "dataType": "int64",
+            "sourceColumn": "SubCategoryID",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "SubCategoryName",
+            "dataType": "string",
+            "sourceColumn": "SubCategoryName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "SupplierGroupID",
+            "dataType": "int64",
+            "sourceColumn": "SupplierGroupID",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "SupplierGroupDesc",
+            "dataType": "string",
+            "sourceColumn": "SupplierGroupDesc",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "IsOther",
+            "dataType": "boolean",
+            "sourceColumn": "IsOther",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimProducts",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[DimProducts].[ProductID],[dbo].[DimProducts].[ProductName],[dbo].[DimProducts].[CategoryID],[dbo].[DimProducts].[CategoryName],[dbo].[DimProducts].[SubCategoryID],[dbo].[DimProducts].[SubCategoryName],[dbo].[DimProducts].[SupplierGroupID],[dbo].[DimProducts].[SupplierGroupDesc],[dbo].[DimProducts].[IsOther] FROM [dbo].[DimProducts] ",
+              "dataSource": "BaraamMarketing"
+            },
+            "annotations": [
+              {
+                "name": "TableWidgetSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+                  "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+                  "  <ColumnSuggestedType />",
+                  "  <ColumnFormat />",
+                  "  <ColumnAccuracy />",
+                  "  <ColumnCurrencySymbol />",
+                  "  <ColumnPositivePattern />",
+                  "  <ColumnNegativePattern />",
+                  "  <ColumnWidths>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>ProductID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>110</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>ProductName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>134</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>CategoryID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>119</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>CategoryName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>143</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SubCategoryID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>146</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SubCategoryName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>170</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierGroupID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>158</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierGroupDesc</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>174</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>IsOther</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>92</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>55</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI_Date</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>96</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnWidths>",
+                  "  <ColumnDisplayIndex>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>ProductID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>0</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>ProductName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>1</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>CategoryID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>2</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>CategoryName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>3</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SubCategoryID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>4</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SubCategoryName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>5</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierGroupID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>6</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierGroupDesc</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>7</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>IsOther</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>8</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>9</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI_Date</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>10</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnDisplayIndex>",
+                  "  <ColumnFrozen />",
+                  "  <ColumnChecked>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI_Date</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnChecked>",
+                  "  <ColumnFilter />",
+                  "  <SelectionFilter />",
+                  "  <FilterParameters />",
+                  "  <IsSortDescending>false</IsSortDescending>",
+                  "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "המוצרים",
+            "levels": [
+              {
+                "name": "שם קטגוריה",
+                "ordinal": 0,
+                "column": "CategoryName"
+              },
+              {
+                "name": "שם תת קטגוריה",
+                "ordinal": 1,
+                "column": "SubCategoryName"
+              },
+              {
+                "name": "שם מוצר",
+                "ordinal": 2,
+                "column": "ProductName"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimProducts].[ProductID],[dbo].[DimProducts].[ProductName],[dbo].[DimProducts].[CategoryID],[dbo].[DimProducts].[CategoryName],[dbo].[DimProducts].[SubCategoryID],[dbo].[DimProducts].[SubCategoryName],[dbo].[DimProducts].[SupplierGroupID],[dbo].[DimProducts].[SupplierGroupDesc],[dbo].[DimProducts].[IsOther] FROM [dbo].[DimProducts] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimProducts"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "TableWidgetSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+              "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+              "  <ColumnSuggestedType />",
+              "  <ColumnFormat />",
+              "  <ColumnAccuracy />",
+              "  <ColumnCurrencySymbol />",
+              "  <ColumnPositivePattern />",
+              "  <ColumnNegativePattern />",
+              "  <ColumnWidths>",
+              "    <item>",
+              "      <key>",
+              "        <string>ProductID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>110</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>ProductName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>134</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>CategoryID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>119</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>CategoryName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>143</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SubCategoryID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>146</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SubCategoryName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>170</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierGroupID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>158</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierGroupDesc</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>174</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>IsOther</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>92</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>55</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI_Date</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>96</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnWidths>",
+              "  <ColumnDisplayIndex>",
+              "    <item>",
+              "      <key>",
+              "        <string>ProductID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>0</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>ProductName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>1</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>CategoryID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>2</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>CategoryName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>3</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SubCategoryID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>4</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SubCategoryName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>5</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierGroupID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>6</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierGroupDesc</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>7</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>IsOther</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>8</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>9</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI_Date</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>10</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnDisplayIndex>",
+              "  <ColumnFrozen />",
+              "  <ColumnChecked>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI_Date</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnChecked>",
+              "  <ColumnFilter />",
+              "  <SelectionFilter />",
+              "  <FilterParameters />",
+              "  <IsSortDescending>false</IsSortDescending>",
+              "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Fact_KPIs",
+        "columns": [
+          {
+            "name": "AgentID",
+            "dataType": "int64",
+            "sourceColumn": "AgentID",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "CategoryID",
+            "dataType": "int64",
+            "sourceColumn": "CategoryID",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "Target",
+            "dataType": "int64",
+            "sourceColumn": "Target",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_KPIs",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[Fact_KPIs].* FROM [dbo].[Fact_KPIs] ",
+              "dataSource": "BaraamMarketing"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "SalesTarget",
+            "expression": [
+              "CALCULATE(",
+              "                SUM(Fact_KPIs[Target]),",
+              "                TREATAS(",
+              "                       SUMMARIZE(FactTransactions,DimProducts[CategoryID],DimDate[Year]),",
+              "                        Fact_KPIs[CategoryID],Fact_KPIs[Year])",
+              "                        )"
+            ],
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "GapTargetActualSum",
+            "expression": [
+              "",
+              "   CALCULATE([Sales]-[SalesTarget])",
+              ""
+            ],
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "RatioGapTarget",
+            "expression": [
+              "",
+              "        DIVIDE([Sales],[SalesTarget])"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Fact_KPIs].* FROM [dbo].[Fact_KPIs] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Fact_KPIs"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "DimAgents",
+        "columns": [
+          {
+            "name": "AgentID",
+            "dataType": "int64",
+            "sourceColumn": "AgentID",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "AgentName",
+            "dataType": "string",
+            "sourceColumn": "AgentName",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimAgents",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[DimAgents].[AgentID],[dbo].[DimAgents].[AgentName] FROM [dbo].[DimAgents] ",
+              "dataSource": "BaraamMarketing"
+            },
+            "annotations": [
+              {
+                "name": "TableWidgetSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+                  "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+                  "  <ColumnSuggestedType />",
+                  "  <ColumnFormat />",
+                  "  <ColumnAccuracy />",
+                  "  <ColumnCurrencySymbol />",
+                  "  <ColumnPositivePattern />",
+                  "  <ColumnNegativePattern />",
+                  "  <ColumnWidths>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>AgentID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>98</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>AgentName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>122</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>55</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI_Date</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>96</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnWidths>",
+                  "  <ColumnDisplayIndex>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>AgentID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>0</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>AgentName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>1</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>2</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI_Date</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>3</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnDisplayIndex>",
+                  "  <ColumnFrozen />",
+                  "  <ColumnChecked>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI_Date</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnChecked>",
+                  "  <ColumnFilter />",
+                  "  <SelectionFilter />",
+                  "  <FilterParameters />",
+                  "  <IsSortDescending>false</IsSortDescending>",
+                  "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimAgents].[AgentID],[dbo].[DimAgents].[AgentName] FROM [dbo].[DimAgents] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimAgents"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "TableWidgetSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+              "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+              "  <ColumnSuggestedType />",
+              "  <ColumnFormat />",
+              "  <ColumnAccuracy />",
+              "  <ColumnCurrencySymbol />",
+              "  <ColumnPositivePattern />",
+              "  <ColumnNegativePattern />",
+              "  <ColumnWidths>",
+              "    <item>",
+              "      <key>",
+              "        <string>AgentID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>98</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>AgentName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>122</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>55</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI_Date</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>96</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnWidths>",
+              "  <ColumnDisplayIndex>",
+              "    <item>",
+              "      <key>",
+              "        <string>AgentID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>0</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>AgentName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>1</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>2</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI_Date</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>3</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnDisplayIndex>",
+              "  <ColumnFrozen />",
+              "  <ColumnChecked>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI_Date</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnChecked>",
+              "  <ColumnFilter />",
+              "  <SelectionFilter />",
+              "  <FilterParameters />",
+              "  <IsSortDescending>false</IsSortDescending>",
+              "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "FactTransactions",
+        "columns": [
+          {
+            "name": "InvoiceID",
+            "dataType": "int64",
+            "sourceColumn": "InvoiceID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "InvoiceDate",
+            "dataType": "dateTime",
+            "sourceColumn": "InvoiceDate",
+            "formatString": "dd/MM/yyyy",
+            "sourceProviderType": "DBDate",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"1033\" Group=\"ShortDate\" FormatString=\"dd/MM/yyyy\" /></DateTimes></Format>"
+              }
+            ]
+          },
+          {
+            "name": "DateID",
+            "dataType": "int64",
+            "sourceColumn": "DateID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "sourceColumn": "ProductID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CustomerID",
+            "dataType": "int64",
+            "sourceColumn": "CustomerID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "AgentID",
+            "dataType": "int64",
+            "sourceColumn": "AgentID",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "Quantity",
+            "dataType": "double",
+            "sourceColumn": "Quantity",
+            "sourceProviderType": "Currency"
+          },
+          {
+            "name": "Price",
+            "dataType": "decimal",
+            "sourceColumn": "Price",
+            "formatString": "\"₪\"#,0.00;-\"₪\"#,0.00;\"₪\"#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"₪ English (United States)\" Symbol=\"₪\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "RowDiscount",
+            "dataType": "decimal",
+            "sourceColumn": "RowDiscount",
+            "formatString": "\"₪\"#,0.00;-\"₪\"#,0.00;\"₪\"#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"₪ English (United States)\" Symbol=\"₪\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "InvRowDiscount",
+            "dataType": "decimal",
+            "sourceColumn": "InvRowDiscount",
+            "formatString": "\"₪\"#,0.00;-\"₪\"#,0.00;\"₪\"#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"₪ English (United States)\" Symbol=\"₪\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "TotalDiscount",
+            "dataType": "decimal",
+            "sourceColumn": "TotalDiscount",
+            "formatString": "\"₪\"#,0.00;-\"₪\"#,0.00;\"₪\"#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"₪ English (United States)\" Symbol=\"₪\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "NetRowAmount",
+            "dataType": "decimal",
+            "sourceColumn": "NetRowAmount",
+            "formatString": "\"₪\"#,0.00;-\"₪\"#,0.00;\"₪\"#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"₪ English (United States)\" Symbol=\"₪\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "IsDebitInvoice",
+            "dataType": "boolean",
+            "sourceColumn": "IsDebitInvoice",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactTransactions2009",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT [dbo].[FactTransactions].* FROM [dbo].[FactTransactions]",
+                "WHERE YEAR(InvoiceDATE)=2009"
+              ],
+              "dataSource": "BaraamMarketing"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[FactTransactions].* FROM [dbo].[FactTransactions]",
+                  "WHERE YEAR(InvoiceDATE)=2009</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "FactTransactions2010",
+            "mode": "import",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT [dbo].[FactTransactions].* FROM [dbo].[FactTransactions]",
+                "WHERE YEAR(InvoiceDATE)=2010"
+              ],
+              "dataSource": "BaraamMarketing"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[FactTransactions].* FROM [dbo].[FactTransactions]",
+                  "WHERE YEAR(InvoiceDATE)=2010</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "TopCustomersSales",
+            "expression": [
+              "",
+              "            CALCULATE (",
+              "                [Sales],",
+              "                FILTER (",
+              "                  VALUES(DimCustomers[CustomerName]),",
+              "                     IF(  RANKX (",
+              "                            ALL (DimCustomers[CustomerName]),",
+              "                             [Sales],,DESC)<=10,[Sales],BLANK()))",
+              " )"
+            ],
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "%TopCustomersSales",
+            "expression": [
+              "",
+              "  VAR AllCustomersSales = CALCULATE([Sales],ALL(DimCustomers))",
+              "  VAR   Resut = DIVIDE([TopCustomersSales],AllCustomersSales)",
+              "RETURN",
+              "    Resut",
+              "    "
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "Sales",
+            "expression": "SUM(FactTransactions[NetRowAmount])",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PP_Sales",
+            "expression": "CALCULATE([Sales],DATEADD(DimDate[Date],-1,YEAR))",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "RatioPP_Sales",
+            "expression": "DIVIDE([Sales],[PP_Sales])",
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "Sales_YTD",
+            "expression": " CALCULATE ( [Sales],DATESYTD(DimDate[Date]))",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "DistinctCustomers",
+            "expression": "DISTINCTCOUNT(FactTransactions[CustomerID])",
+            "formatString": "0"
+          },
+          {
+            "name": "AvgDayliInvoiceAmount",
+            "expression": [
+              " ",
+              "",
+              "VAR TotalInvoiceTable =",
+              "    SUMMARIZE (",
+              "           FactTransactions,",
+              "            FactTransactions[InvoiceID],",
+              "            \"TotalInvoice\", SUM ( FactTransactions[NetRowAmount] )",
+              "    )",
+              "VAR Result = ",
+              "        AVERAGEX (",
+              "            TotalInvoiceTable,",
+              "            [TotalInvoice]",
+              "        )",
+              "",
+              "RETURN",
+              "    Result",
+              "    "
+            ],
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "10BottomProducts",
+            "expression": [
+              " ",
+              "",
+              "",
+              "\t\tCALCULATE ([Sales],",
+              "\t\t\tFILTER(",
+              "        \t  VALUES(DimProducts[ProductName]),",
+              "\t\t\t\tIF (",
+              "\t\t\t\t RANKX (",
+              "                   FILTER( ",
+              "                    ALL(DimProducts[ProductName]),[Sales]>0),",
+              "                        [Sales],,ASC,Dense)<=10,",
+              "\t\t                [Sales]>0 ,",
+              "\t\t\t\t\t\tBLANK()",
+              ")",
+              "    )",
+              "        )"
+            ],
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "%_10BottomProducts",
+            "expression": [
+              "",
+              "VAR AllProductsSales =",
+              "        CALCULATE (",
+              "            [NetSales_AllProducts],",
+              "            ALL ( DimProducts )",
+              "        )",
+              "VAR Result =",
+              "        DIVIDE (",
+              "            [10BottomProducts],",
+              "            AllProductsSales",
+              "        )",
+              "RETURN",
+              "       Result"
+            ],
+            "formatString": "0.00000%;-0.00000%;0.00000%"
+          },
+          {
+            "name": "10TopProducts",
+            "expression": [
+              " ",
+              "\tCALCULATE ([Sales],",
+              "\t   \t FILTER(",
+              "        \t VALUES(DimProducts[ProductName]),",
+              "\t\t\t\tIF (",
+              "\t\t\t\t\tRANKX (",
+              "            \t\t\tFILTER( ",
+              "                  \t\t\t  ALL(DimProducts[ProductName]),[Sales]),",
+              "                       \t\t  [Sales],,DESC,Dense)<=10,",
+              "\t\t                      [Sales] ,BLANK()",
+              ")",
+              "    )",
+              "        )"
+            ],
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "%_10TopProducts",
+            "expression": [
+              "",
+              "    VAR AllProductsSales =",
+              "            CALCULATE (",
+              "                [NetSales_AllProducts],",
+              "                ALL ( DimProducts )",
+              "            )",
+              "    VAR Result =",
+              "            DIVIDE (",
+              "                [10TopProducts],",
+              "                AllProductsSales",
+              "            )",
+              "    RETURN",
+              "            Result"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "CreditInvoicesSales",
+            "expression": " CALCULATE([Sales],DimInvoiceType[InvoiceType]=FALSE())*-1",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "%_DebitInvoicesSales",
+            "expression": [
+              "",
+              "",
+              "DIVIDE([Sales],[DebitInvoicesSales])"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "%_CreditInvoiceSales",
+            "expression": " DIVIDE([CreditInvoicesSales],[Sales])",
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "DebitInvoicesSales",
+            "expression": [
+              " CALCULATE([Sales],DimInvoiceType[InvoiceType]=TRUE())",
+              "",
+              ""
+            ],
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "AmountOfCreditInvoices",
+            "expression": [
+              "",
+              "    CALCULATE(DISTINCTCOUNT(FactTransactions[InvoiceID]),DimInvoiceType[InvoiceType]=FALSE())"
+            ]
+          },
+          {
+            "name": "AmountOfDebitIInvoices",
+            "expression": [
+              "",
+              "    CALCULATE(DISTINCTCOUNT(FactTransactions[InvoiceID]),DimInvoiceType[InvoiceType]=TRUE())"
+            ]
+          },
+          {
+            "name": "SelectedProducts",
+            "expression": [
+              " ",
+              "",
+              "VAR SelectedType = SELECTEDVALUE(RankingType[Type])",
+              "VAR ProductsList =",
+              "\t\tIF (SelectedType = \" 10 המוצרים הטובים\",",
+              "\t\t\t[10TopProducts]",
+              "\t\t\t,",
+              "\t\t\t[10BottomProducts]",
+              "\t\t\t)",
+              "RETURN ",
+              "\t ProductsList"
+            ],
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "NetSales_AllProducts",
+            "expression": [
+              " CALCULATE(",
+              "                        [Sales],ALL(DimProducts))"
+            ],
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "%_SelectedProducts",
+            "expression": [
+              " ",
+              "",
+              "VAR SelectedType = SELECTEDVALUE(RankingType[Type])",
+              "VAR ProductsList =",
+              "\t\tIF (SelectedType = \" 10 המוצרים הטובים\",",
+              "\t\t\t[%_10TopProducts]     ",
+              "\t\t\t,",
+              "\t\t\t[%_10BottomProducts]",
+              "\t\t\t)",
+              "RETURN ",
+              "\t  ProductsList",
+              ""
+            ],
+            "formatString": "0.00000%;-0.00000%;0.00000%"
+          },
+          {
+            "name": "GrandTotalDiscount",
+            "expression": "CALCULATE(SUM(FactTransactions[TotalDiscount]))",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "%_TotalDiscount",
+            "expression": [
+              " DIVIDE([GrandTotalDiscount],[NetSales_AllProducts])",
+              "",
+              ""
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "DistinctProducts",
+            "expression": " DISTINCTCOUNT(FactTransactions[ProductID])"
+          },
+          {
+            "name": "AvgProductsPerInv",
+            "expression": [
+              " ",
+              "",
+              "VAR CountProducts =",
+              "    SUMMARIZE (",
+              "           FactTransactions,",
+              "            FactTransactions[InvoiceID],",
+              "            \"CountProducts\", COUNT( FactTransactions[ProductID] )",
+              "    )",
+              "VAR Result = ",
+              "        AVERAGEX (",
+              "            CountProducts,",
+              "            [CountProducts]",
+              "        )",
+              "",
+              "RETURN",
+              "    Result",
+              "    "
+            ],
+            "formatString": "0.00"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[FactTransactions].* FROM [dbo].[FactTransactions] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "FactTransactions"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "DimDate",
+        "dataCategory": "Time",
+        "columns": [
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "isKey": true,
+            "sourceColumn": "Date",
+            "formatString": "dd/MM/yyyy",
+            "sourceProviderType": "DBDate",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"1033\" Group=\"ShortDate\" FormatString=\"dd/MM/yyyy\" /></DateTimes></Format>"
+              }
+            ]
+          },
+          {
+            "name": "DateID",
+            "dataType": "int64",
+            "sourceColumn": "DateID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MonthNumber",
+            "dataType": "int64",
+            "sourceColumn": "MonthNumber",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "DayOfWeek",
+            "dataType": "int64",
+            "sourceColumn": "DayOfWeek",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "int64",
+            "sourceColumn": "Quarter",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "QuarterAndYear",
+            "dataType": "string",
+            "sourceColumn": "QuarterAndYear",
+            "sortByColumn": "Year",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "Holiday",
+            "dataType": "string",
+            "sourceColumn": "Holiday",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "IsHoliday",
+            "dataType": "string",
+            "sourceColumn": "IsHoliday",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "type": "calculated",
+            "name": "Hebrew Month Name",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "  SWITCH(DimDate[MonthNumber], 1, \"ינואר\", 2, \"פברואר\", 3, \"מרץ\",4, \"אפריל\"  ",
+              "               , 5, \"מאי\", 6, \"יוני\", 7, \"יולי\",8, \"אוגוסט\", 9, \"ספטמבר\",10, \"אוקטובר\", 11, \"נובמבר\", 12, \"דצמבר\" )"
+            ],
+            "sortByColumn": "MonthNumber"
+          },
+          {
+            "type": "calculated",
+            "name": "Hebrew Day Name",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "  SWITCH(DimDate[DayOfWeek], 1, \"ראשון\", 2, \"שני\", 3, \"שלישי\", 4, \"רביעי\"  ",
+              "               , 5, \"חמישי\", 6, \"שישי\", 7, \"שבת\")"
+            ],
+            "sortByColumn": "DayOfWeek"
+          },
+          {
+            "type": "calculated",
+            "name": "Hebrew Quarter",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "  SWITCH(DimDate[Quarter], 1,\"רבעון 1\" , 2, \"רבעון 2\" , 3 , \"רבעון 3\" , 4, \"רבעון 4\" )",
+              ""
+            ],
+            "sortByColumn": "Quarter"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDate",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[DimDate].[Date],[dbo].[DimDate].[DateID],[dbo].[DimDate].[MonthNumber],[dbo].[DimDate].[DayOfWeek],[dbo].[DimDate].[Quarter],[dbo].[DimDate].[QuarterAndYear],[dbo].[DimDate].[Year],[dbo].[DimDate].[Holiday],[dbo].[DimDate].[IsHoliday] FROM [dbo].[DimDate] ",
+              "dataSource": "BaraamMarketing"
+            },
+            "annotations": [
+              {
+                "name": "TableWidgetSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+                  "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+                  "  <ColumnSuggestedType />",
+                  "  <ColumnFormat />",
+                  "  <ColumnAccuracy />",
+                  "  <ColumnCurrencySymbol />",
+                  "  <ColumnPositivePattern />",
+                  "  <ColumnNegativePattern />",
+                  "  <ColumnWidths>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Date</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>71</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DateID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>88</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MonthNumber</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>140</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfWeek</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>121</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Quarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>93</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>QuarterAndYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>154</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Year</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>71</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Holiday</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>92</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>IsHoliday</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>105</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>55</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI_Date</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>96</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnWidths>",
+                  "  <ColumnDisplayIndex>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Date</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>0</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DateID</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>1</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MonthNumber</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>2</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfWeek</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>3</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Quarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>4</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>QuarterAndYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>5</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Year</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>6</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Holiday</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>7</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>IsHoliday</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>8</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>9</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI_Date</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>10</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnDisplayIndex>",
+                  "  <ColumnFrozen />",
+                  "  <ColumnChecked>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI_Date</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>RI</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnChecked>",
+                  "  <ColumnFilter />",
+                  "  <SelectionFilter />",
+                  "  <FilterParameters />",
+                  "  <IsSortDescending>false</IsSortDescending>",
+                  "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "ציר זמן",
+            "levels": [
+              {
+                "name": "שנה",
+                "ordinal": 0,
+                "column": "Year"
+              },
+              {
+                "name": "רבעון",
+                "ordinal": 1,
+                "column": "Hebrew Quarter"
+              },
+              {
+                "name": "חודש",
+                "ordinal": 2,
+                "column": "Hebrew Month Name"
+              },
+              {
+                "name": "תאריך",
+                "ordinal": 3,
+                "column": "Date"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimDate].[Date],[dbo].[DimDate].[DateID],[dbo].[DimDate].[MonthNumber],[dbo].[DimDate].[DayOfWeek],[dbo].[DimDate].[Quarter],[dbo].[DimDate].[QuarterAndYear],[dbo].[DimDate].[Year],[dbo].[DimDate].[Holiday],[dbo].[DimDate].[IsHoliday] FROM [dbo].[DimDate] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimDate"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "TableWidgetSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+              "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+              "  <ColumnSuggestedType />",
+              "  <ColumnFormat />",
+              "  <ColumnAccuracy />",
+              "  <ColumnCurrencySymbol />",
+              "  <ColumnPositivePattern />",
+              "  <ColumnNegativePattern />",
+              "  <ColumnWidths>",
+              "    <item>",
+              "      <key>",
+              "        <string>Date</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>71</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DateID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>88</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MonthNumber</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>140</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfWeek</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>121</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Quarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>93</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>QuarterAndYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>154</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Year</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>71</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Holiday</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>92</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>IsHoliday</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>105</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>55</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI_Date</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>96</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnWidths>",
+              "  <ColumnDisplayIndex>",
+              "    <item>",
+              "      <key>",
+              "        <string>Date</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>0</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DateID</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>1</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MonthNumber</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>2</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfWeek</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>3</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Quarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>4</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>QuarterAndYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>5</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Year</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>6</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Holiday</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>7</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>IsHoliday</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>8</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>9</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI_Date</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>10</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnDisplayIndex>",
+              "  <ColumnFrozen />",
+              "  <ColumnChecked>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI_Date</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>RI</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnChecked>",
+              "  <ColumnFilter />",
+              "  <SelectionFilter />",
+              "  <FilterParameters />",
+              "  <IsSortDescending>false</IsSortDescending>",
+              "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "RankingType",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Type",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Type]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": [
+                " SELECTCOLUMNS(",
+                "        {(\" 10 המוצרים הטובים\"),",
+                "         (\"10 המוצרים הגרועים\")},",
+                "        \"Type\", [Value])"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "8734f7c9-d06f-4c4a-8d5a-3d72efc25b24",
+        "fromTable": "Fact_KPIs",
+        "fromColumn": "AgentID",
+        "toTable": "DimAgents",
+        "toColumn": "AgentID"
+      },
+      {
+        "name": "ab594a4b-af66-45f7-8ab6-55dddf5ca6a4",
+        "fromTable": "FactTransactions",
+        "fromColumn": "AgentID",
+        "toTable": "DimAgents",
+        "toColumn": "AgentID"
+      },
+      {
+        "name": "22078770-1931-4a07-b873-454902f3202f",
+        "fromTable": "FactTransactions",
+        "fromColumn": "CustomerID",
+        "toTable": "DimCustomers",
+        "toColumn": "CustomerID"
+      },
+      {
+        "name": "9df8bc77-fa24-4456-851b-8f2074f93431",
+        "fromTable": "FactTransactions",
+        "fromColumn": "IsDebitInvoice",
+        "toTable": "DimInvoiceType",
+        "toColumn": "InvoiceType"
+      },
+      {
+        "name": "5080c73e-8a4a-4a37-aa1f-06cf2a095e40",
+        "fromTable": "FactTransactions",
+        "fromColumn": "ProductID",
+        "toTable": "DimProducts",
+        "toColumn": "ProductID"
+      },
+      {
+        "name": "05d15046-89a0-4465-a29e-4f4c86569d3b",
+        "fromTable": "FactTransactions",
+        "fromColumn": "DateID",
+        "toTable": "DimDate",
+        "toColumn": "DateID"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  }
+}

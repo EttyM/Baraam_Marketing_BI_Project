@@ -1,0 +1,2150 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/5/2021 3:34:45 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ETTYM"
+  DTS:CreatorName="ETTYM\Lenovo-PC"
+  DTS:DTSID="{48B802EF-2179-42A1-A3E0-B27CE13D1216}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="STG_DimProducts"
+  DTS:PackageType="5"
+  DTS:VersionBuild="69"
+  DTS:VersionGUID="{11AF5ABC-C136-49B4-81FE-EAD02C81BA53}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.STG_BaramMarketing]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{93D4D960-E681-4EC4-94A6-8F1D4A2475BF}"
+      DTS:ObjectName="LocalHost.STG_BaramMarketing">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::PP_ConnectionString_STG]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=STG_BaramMarketing;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load 4 MRR_tables to STG_DimProducts"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9AB650B9-CB3C-4B0F-AFBD-57958D855427}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:MaxErrorCount="5"
+      DTS:ObjectName="Load 4 MRR_tables to STG_DimProducts"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Create &amp; Load ErrProducts"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ErrProducts]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">ROWS_PER_BATCH = 10000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">100000</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.STG_BaramMarketing]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.STG_BaramMarketing]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                      cachedDataType="wstr"
+                      cachedLength="13"
+                      cachedName="ProductID"
+                      externalMetadataColumnId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Inputs[OLE DB Destination Input].Columns[ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="41"
+                      cachedName="ProductName"
+                      externalMetadataColumnId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Inputs[OLE DB Destination Input].ExternalColumns[ErrProductName]"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[ProductName]" />
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Inputs[OLE DB Destination Input].Columns[Section]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Section"
+                      externalMetadataColumnId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Inputs[OLE DB Destination Input].ExternalColumns[Section]"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[Section]" />
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Inputs[OLE DB Destination Input].Columns[SubCategory]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="SubCategory"
+                      externalMetadataColumnId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Inputs[OLE DB Destination Input].ExternalColumns[SubCategory]"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[SubCategory]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      dataType="wstr"
+                      length="13"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Inputs[OLE DB Destination Input].ExternalColumns[ErrProductName]"
+                      dataType="wstr"
+                      length="41"
+                      name="ErrProductName" />
+                    <externalMetadataColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Inputs[OLE DB Destination Input].ExternalColumns[Section]"
+                      dataType="wstr"
+                      length="8"
+                      name="Section" />
+                    <externalMetadataColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Inputs[OLE DB Destination Input].ExternalColumns[SubCategory]"
+                      dataType="wstr"
+                      length="3"
+                      name="SubCategory" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Create &amp; Load STG_DimProducts"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG_DimProducts]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">ROWS_PER_BATCH = 10000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">100000</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.STG_BaramMarketing]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.STG_BaramMarketing]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].Columns[DC_ProductID]"
+                      cachedDataType="i2"
+                      cachedName="DC_ProductID"
+                      externalMetadataColumnId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[DC_ProductID]" />
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].Columns[DC_ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="DC_ProductName"
+                      externalMetadataColumnId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[DC_ProductName]" />
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].Columns[DC_ProductCategoryID]"
+                      cachedDataType="i4"
+                      cachedName="DC_ProductCategoryID"
+                      externalMetadataColumnId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategoryID]"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Outputs[Derived Column Output].Columns[DC_ProductCategoryID]" />
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].Columns[CategoryName]"
+                      cachedDataType="wstr"
+                      cachedLength="65"
+                      cachedName="CategoryName"
+                      externalMetadataColumnId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[CategoryName]"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Outputs[Lookup Match Output].Columns[CategoryName]" />
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].Columns[DC_SubCategory]"
+                      cachedDataType="i2"
+                      cachedName="DC_SubCategory"
+                      externalMetadataColumnId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[ProductSubCategory]"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[DC_SubCategory]" />
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].Columns[SubCategoryName]"
+                      cachedDataType="wstr"
+                      cachedLength="65"
+                      cachedName="SubCategoryName"
+                      externalMetadataColumnId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[SubCategoryName]"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Outputs[Lookup Match Output].Columns[SubCategoryName]" />
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].Columns[ProductSupplier]"
+                      cachedDataType="i2"
+                      cachedName="ProductSupplier"
+                      externalMetadataColumnId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[ProductSupplierID]"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[ProductSupplier]" />
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].Columns[SupplierGroupDesc]"
+                      cachedDataType="wstr"
+                      cachedLength="65"
+                      cachedName="SupplierGroupDesc"
+                      externalMetadataColumnId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[SupplierGroupDesc]"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Outputs[Lookup Match Output].Columns[SupplierGroupDesc]" />
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].Columns[IsOther]"
+                      cachedDataType="bool"
+                      cachedName="IsOther"
+                      externalMetadataColumnId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[IsOther]"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[IsOther]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="60"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategoryID]"
+                      dataType="i2"
+                      name="ProductCategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[CategoryName]"
+                      dataType="wstr"
+                      length="65"
+                      name="CategoryName" />
+                    <externalMetadataColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[ProductSubCategory]"
+                      dataType="i2"
+                      name="ProductSubCategory" />
+                    <externalMetadataColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[SubCategoryName]"
+                      dataType="wstr"
+                      length="65"
+                      name="SubCategoryName" />
+                    <externalMetadataColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[ProductSupplierID]"
+                      dataType="i2"
+                      name="ProductSupplierID" />
+                    <externalMetadataColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[SupplierGroupDesc]"
+                      dataType="wstr"
+                      length="65"
+                      name="SupplierGroupDesc" />
+                    <externalMetadataColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input].ExternalColumns[IsOther]"
+                      dataType="bool"
+                      name="IsOther" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Handle Nulls &amp; Data Types"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Inputs[Derived Column Input].Columns[DC_ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="DC_ProductName"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[DC_ProductName]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACENULL](#{Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[DC_ProductName]}," שם מוצר " + @[$Project::PP_Unknown_String])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(DC_ProductName," שם מוצר " + @[$Project::PP_Unknown_String])</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Inputs[Derived Column Input].Columns[DC_CategoryName]"
+                      cachedDataType="wstr"
+                      cachedLength="65"
+                      cachedName="CategoryName"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Outputs[Lookup Match Output].Columns[CategoryName]"
+                      name="DC_CategoryName"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACENULL](#{Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Outputs[Lookup Match Output].Columns[CategoryName]}," שם קטגוריה " + @[$Project::PP_Unknown_String])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(DC_CategoryName," שם קטגוריה " + @[$Project::PP_Unknown_String])</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Inputs[Derived Column Input].Columns[DC_SubCategoryName]"
+                      cachedDataType="wstr"
+                      cachedLength="65"
+                      cachedName="SubCategoryName"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Outputs[Lookup Match Output].Columns[SubCategoryName]"
+                      name="DC_SubCategoryName"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACENULL](#{Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Outputs[Lookup Match Output].Columns[SubCategoryName]}," שם תתקטגוריה  " + @[$Project::PP_Unknown_String])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(DC_SubCategoryName," שם תתקטגוריה  " + @[$Project::PP_Unknown_String])</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Inputs[Derived Column Input].Columns[DC_SupplierGroupDesc]"
+                      cachedDataType="wstr"
+                      cachedLength="65"
+                      cachedName="SupplierGroupDesc"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Outputs[Lookup Match Output].Columns[SupplierGroupDesc]"
+                      name="DC_SupplierGroupDesc"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACENULL](#{Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Outputs[Lookup Match Output].Columns[SupplierGroupDesc]},"ספק" + " " + @[$Project::PP_Unknown_String])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(DC_SupplierGroupDesc,"ספק" + " " + @[$Project::PP_Unknown_String])</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Inputs[Derived Column Input].Columns[ProductCategory]"
+                      cachedDataType="i2"
+                      cachedName="ProductCategory"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[ProductCategory]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Outputs[Derived Column Output].Columns[DC_ProductCategoryID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Outputs[Derived Column Output].Columns[DC_ProductCategoryID]"
+                      name="DC_ProductCategoryID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[ProductCategory]} == 0 || #{Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[ProductCategory]} == 6 ? @[$Project::PP_Unknown_Int] : #{Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[ProductCategory]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ProductCategory == 0 || ProductCategory == 6 ? @[$Project::PP_Unknown_Int] : ProductCategory</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Handle Products Data types"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Inputs[Derived Column Input].Columns[ProductID]"
+                      cachedDataType="wstr"
+                      cachedLength="13"
+                      cachedName="ProductID"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Inputs[Derived Column Input].Columns[ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="41"
+                      cachedName="ProductName"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[ProductName]" />
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Inputs[Derived Column Input].Columns[Section]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Section"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[Section]" />
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Inputs[Derived Column Input].Columns[SubCategory]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="SubCategory"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[SubCategory]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[DC_ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[DC_ProductID]"
+                      name="DC_ProductID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)#{Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[ProductID]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)ProductID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[DC_ProductName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="60"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[DC_ProductName]"
+                      name="DC_ProductName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REVERSE]([TRIM]((DT_WSTR,60)#{Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[ProductName]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REVERSE(TRIM((DT_WSTR,60)ProductName))</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[DC_SubCategory]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[DC_SubCategory]"
+                      name="DC_SubCategory"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I2)#{Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[SubCategory]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I2)SubCategory</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[ProductCategory]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[ProductCategory]"
+                      name="ProductCategory"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I2)[SUBSTRING]([TRIM](#{Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[Section]}),4,1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I2)SUBSTRING(TRIM(Section),4,1)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[ProductSupplier]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[ProductSupplier]"
+                      name="ProductSupplier"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I2)[SUBSTRING]([TRIM](#{Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[Section]}),5,2)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I2)SUBSTRING(TRIM(Section),5,2)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[IsOther]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[IsOther]"
+                      name="IsOther"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_BOOL)(((DT_I4)[TRIM](#{Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[ProductID]})) == (DT_I4)100000 || ((DT_I4)[TRIM](#{Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[ProductID]})) == (DT_I4)100004 || ((DT_I4)[TRIM](#{Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[ProductID]})) == (DT_I4)100007 || ((DT_I4)[TRIM](#{Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[ProductID]})) == (DT_I4)100008 || ((DT_I4)[TRIM](#{Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[ProductID]})) == (DT_I4)100009 ? (DT_I4)1 : (DT_I4)0)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_BOOL)(((DT_I4)TRIM(ProductID)) == (DT_I4)100000 || ((DT_I4)TRIM(ProductID)) == (DT_I4)100004 || ((DT_I4)TRIM(ProductID)) == (DT_I4)100007 || ((DT_I4)TRIM(ProductID)) == (DT_I4)100008 || ((DT_I4)TRIM(ProductID)) == (DT_I4)100009 ? (DT_I4)1 : (DT_I4)0)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Product Category Name"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CAST ([CategoryID] as smallint) AS [CategoryID]
+      ,CAST ([CategoryName] as nvarchar(65)) AS 
+[CategoryName] 
+FROM [dbo].[MRR_Categories]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT CAST ([CategoryID] as smallint) AS [CategoryID]
+      ,CAST ([CategoryName] as nvarchar(65)) AS 
+[CategoryName] 
+FROM [dbo].[MRR_Categories]) [refTable]
+where [refTable].[CategoryID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CategoryID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CategoryName" dataType="DT_WSTR" length="65" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[ProductCategory]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Connections[OleDbConnection]"
+                  connectionManagerID="{841AE9A8-9773-4302-9CC9-CFE643E5CF84}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MRR_BaramMarketing]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Inputs[Lookup Input].Columns[ProductCategory]"
+                      cachedDataType="i2"
+                      cachedName="ProductCategory"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[ProductCategory]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CategoryID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Outputs[Lookup Match Output].Columns[CategoryName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="65"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Outputs[Lookup Match Output].Columns[CategoryName]"
+                      name="CategoryName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">CategoryName</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Product Subcategory Name"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CAST ([SubCategoryID] as smallint) 
+	AS [SubCategoryID],
+       
+	REVERSE(TRIM([SubCategoryName])) AS                 [SubCategoryName]
+
+FROM [MRR_BaramMarketing].[dbo].[MRR_SubCategories]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT CAST ([SubCategoryID] as smallint) 
+	AS [SubCategoryID],
+       
+	REVERSE(TRIM([SubCategoryName])) AS                 [SubCategoryName]
+
+FROM [MRR_BaramMarketing].[dbo].[MRR_SubCategories]) [refTable]
+where [refTable].[SubCategoryID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SubCategoryID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SubCategoryName" dataType="DT_WSTR" length="65" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[DC_SubCategory]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Connections[OleDbConnection]"
+                  connectionManagerID="{841AE9A8-9773-4302-9CC9-CFE643E5CF84}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MRR_BaramMarketing]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Inputs[Lookup Input].Columns[DC_SubCategory]"
+                      cachedDataType="i2"
+                      cachedName="DC_SubCategory"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[DC_SubCategory]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">SubCategoryID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Outputs[Lookup Match Output].Columns[SubCategoryName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="65"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Outputs[Lookup Match Output].Columns[SubCategoryName]"
+                      name="SubCategoryName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">SubCategoryName</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Product SupplierName"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+CAST ([SupplierGroupCode] as smallint) AS 	[SupplierGroupID],
+	
+             CAST (
+[SupplierGroupDesc]
+
+ as nvarchar(65)) AS [SupplierGroupDesc]
+
+FROM [MRR_BaramMarketing].[dbo].[MRR_Suppliers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT 
+CAST ([SupplierGroupCode] as smallint) AS 	[SupplierGroupID],
+	
+             CAST (
+[SupplierGroupDesc]
+
+ as nvarchar(65)) AS [SupplierGroupDesc]
+
+FROM [MRR_BaramMarketing].[dbo].[MRR_Suppliers]) [refTable]
+where [refTable].[SupplierGroupID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SupplierGroupID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupplierGroupDesc" dataType="DT_WSTR" length="65" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[ProductSupplier]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Connections[OleDbConnection]"
+                  connectionManagerID="{841AE9A8-9773-4302-9CC9-CFE643E5CF84}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MRR_BaramMarketing]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Inputs[Lookup Input].Columns[ProductSupplier]"
+                      cachedDataType="i2"
+                      cachedName="ProductSupplier"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output].Columns[ProductSupplier]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">SupplierGroupID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Outputs[Lookup Match Output].Columns[SupplierGroupDesc]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="65"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Outputs[Lookup Match Output].Columns[SupplierGroupDesc]"
+                      name="SupplierGroupDesc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">SupplierGroupDesc</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="MRR_Products Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[MRR_Products]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Connections[OleDbConnection]"
+                  connectionManagerID="{841AE9A8-9773-4302-9CC9-CFE643E5CF84}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MRR_BaramMarketing]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      length="13"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      length="41"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      name="ProductName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[Section]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].ExternalColumns[Section]"
+                      length="8"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[Section]"
+                      name="Section"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[SubCategory]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].ExternalColumns[SubCategory]"
+                      length="3"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[SubCategory]"
+                      name="SubCategory"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      dataType="wstr"
+                      length="13"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="41"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].ExternalColumns[Section]"
+                      dataType="wstr"
+                      length="8"
+                      name="Section" />
+                    <externalMetadataColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].ExternalColumns[SubCategory]"
+                      dataType="wstr"
+                      length="3"
+                      name="SubCategory" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      dataType="wstr"
+                      length="13"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      dataType="wstr"
+                      length="41"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      name="ProductName" />
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Error Output].Columns[Section]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Error Output].Columns[Section]"
+                      name="Section" />
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Error Output].Columns[SubCategory]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Error Output].Columns[SubCategory]"
+                      name="SubCategory" />
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load 4 MRR_tables to STG_DimProducts\Reverse Incorrect Product Names"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Reverse Incorrect Product Names"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Reverse Incorrect Product Names.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Reverse Incorrect Product Names.Inputs[Derived Column Input].Columns[ErrProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="41"
+                      cachedName="ProductName"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      name="ErrProductName"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REVERSE]([TRIM]((DT_WSTR,60)#{Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[ProductName]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REVERSE(TRIM((DT_WSTR,60)ErrProductName))</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Reverse Incorrect Product Names.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Reverse Incorrect Product Names.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Reverse Incorrect Product Names.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Reverse Incorrect Product Names.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Reverse Incorrect Product Names.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Reverse Incorrect Product Names.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Reverse Incorrect Product Names.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Reverse Incorrect Product Names.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load 4 MRR_tables to STG_DimProducts\Split Incorrect Section Records"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Split Incorrect Section Records"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Split Incorrect Section Records.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Split Incorrect Section Records.Inputs[Conditional Split Input].Columns[Section]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Section"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[Section]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Split Incorrect Section Records.Outputs[Correct Section Records]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Correct Section Records"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Split Incorrect Section Records.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[LEN]([TRIM](#{Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[Section]})) &gt; 3 &amp;&amp; [FINDSTRING]([TRIM](#{Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[Section]}),"",1) &lt; 1 &amp;&amp; [FINDSTRING]([TRIM](#{Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output].Columns[Section]})," ",1) &lt; 1</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">LEN(TRIM(Section)) &gt; 3 &amp;&amp; FINDSTRING(TRIM(Section),"",1) &lt; 1 &amp;&amp; FINDSTRING(TRIM(Section)," ",1) &lt; 1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Split Incorrect Section Records.Outputs[Incorrect Section Records]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Incorrect Section Records"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Split Incorrect Section Records.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load 4 MRR_tables to STG_DimProducts\Split Incorrect Section Records.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Load 4 MRR_tables to STG_DimProducts\Split Incorrect Section Records.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Split Incorrect Section Records.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Split Incorrect Section Records.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load 4 MRR_tables to STG_DimProducts\Split Incorrect Section Records.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load 4 MRR_tables to STG_DimProducts\Split Incorrect Section Records.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load 4 MRR_tables to STG_DimProducts.Paths[Correct Section Records]"
+              endId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Inputs[Derived Column Input]"
+              name="Correct Section Records"
+              startId="Package\Load 4 MRR_tables to STG_DimProducts\Split Incorrect Section Records.Outputs[Correct Section Records]" />
+            <path
+              refId="Package\Load 4 MRR_tables to STG_DimProducts.Paths[Derived Column Output]"
+              endId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load 4 MRR_tables to STG_DimProducts\Reverse Incorrect Product Names.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load 4 MRR_tables to STG_DimProducts.Paths[Derived Column Output1]"
+              endId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load 4 MRR_tables to STG_DimProducts.Paths[Derived Column Output2]"
+              endId="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load 4 MRR_tables to STG_DimProducts.Paths[Incorrect Section Records]"
+              endId="Package\Load 4 MRR_tables to STG_DimProducts\Reverse Incorrect Product Names.Inputs[Derived Column Input]"
+              name="Incorrect Section Records"
+              startId="Package\Load 4 MRR_tables to STG_DimProducts\Split Incorrect Section Records.Outputs[Incorrect Section Records]" />
+            <path
+              refId="Package\Load 4 MRR_tables to STG_DimProducts.Paths[Lookup Match Output]"
+              endId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load 4 MRR_tables to STG_DimProducts.Paths[Lookup Match Output1]"
+              endId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load 4 MRR_tables to STG_DimProducts.Paths[Lookup Match Output2]"
+              endId="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load 4 MRR_tables to STG_DimProducts.Paths[OLE DB Source Output]"
+              endId="Package\Load 4 MRR_tables to STG_DimProducts\Split Incorrect Section Records.Inputs[Conditional Split Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate STG_DimProducts &amp; ErrProducts"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A4DCEB8D-33C8-44CB-B4A5-B699120FA610}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate STG_DimProducts &amp; ErrProducts"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{93D4D960-E681-4EC4-94A6-8F1D4A2475BF}"
+          SQLTask:SqlStatementSource="Truncate table STG_DimProducts&#xA;Truncate table [dbo].[ErrProducts]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{40B60EBA-0D05-4375-AB18-E5AFDBA0C1D3}"
+      DTS:From="Package\Truncate STG_DimProducts &amp; ErrProducts"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load 4 MRR_tables to STG_DimProducts" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="291,43"
+          Id="Package\Load 4 MRR_tables to STG_DimProducts"
+          TopLeft="220.249996703118,122.849997803271" />
+        <NodeLayout
+          Size="291,49"
+          Id="Package\Truncate STG_DimProducts &amp; ErrProducts"
+          TopLeft="221.249996814877,36.0499994537234" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="366.249996758998,85.0499994537234">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.7999983495476"
+              Start="0,0"
+              End="0,30.2999983495476">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.2999983495476" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load 4 MRR_tables to STG_DimProducts">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="223,43"
+          Id="Package\Load 4 MRR_tables to STG_DimProducts\Handle Products Data types"
+          TopLeft="378.611105469366,172.033330257137" />
+        <NodeLayout
+          Size="245,43"
+          Id="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name"
+          TopLeft="276.041662553325,283.105551625722" />
+        <NodeLayout
+          Size="224,43"
+          Id="Package\Load 4 MRR_tables to STG_DimProducts\Split Incorrect Section Records"
+          TopLeft="377.874994384125,74.1499987098575" />
+        <NodeLayout
+          Size="239,43"
+          Id="Package\Load 4 MRR_tables to STG_DimProducts\Handle Nulls &amp; Data Types"
+          TopLeft="384.652772046005,367.688885830773" />
+        <NodeLayout
+          Size="227,45"
+          Id="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name"
+          TopLeft="550.861102917542,284.533328436216" />
+        <NodeLayout
+          Size="232,43"
+          Id="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName"
+          TopLeft="18.9583330508322,282.605552826755" />
+        <NodeLayout
+          Size="237,42"
+          Id="Package\Load 4 MRR_tables to STG_DimProducts\Reverse Incorrect Product Names"
+          TopLeft="32.9166661761702,79.9499985703827" />
+        <NodeLayout
+          Size="240,43"
+          Id="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts"
+          TopLeft="35.1388883652788,177.666663489739" />
+        <NodeLayout
+          Size="235,43"
+          Id="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts"
+          TopLeft="386.527772018065,443.055552520686" />
+        <NodeLayout
+          Size="225,43"
+          Id="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source"
+          TopLeft="380.902772101884,1.44444441861577" />
+        <EdgeLayout
+          Id="Package\Load 4 MRR_tables to STG_DimProducts.Paths[Derived Column Output1]"
+          TopLeft="490.111105469366,215.033330257137">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="174.249997448176,69.499998179079"
+              Start="0,0"
+              End="174.249997448176,61.999998179079">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.7499990895395" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.7499990895395"
+                    Point2="0,34.7499990895395"
+                    Point3="4,34.7499990895395" />
+                  <mssgle:LineSegment
+                    End="170.249997448176,34.7499990895395" />
+                  <mssgle:CubicBezierSegment
+                    Point1="170.249997448176,34.7499990895395"
+                    Point2="174.249997448176,34.7499990895395"
+                    Point3="174.249997448176,38.7499990895395" />
+                  <mssgle:LineSegment
+                    End="174.249997448176,61.999998179079" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load 4 MRR_tables to STG_DimProducts.Paths[Derived Column Output]"
+          TopLeft="153.361110604058,121.949998570383">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.7166649193565"
+              Start="0,0"
+              End="0,48.2166649193565">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.2166649193565" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load 4 MRR_tables to STG_DimProducts.Paths[Correct Section Records]"
+          TopLeft="489.993049926745,117.149998709857">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.8833315472795"
+              Start="0,0"
+              End="0,47.3833315472795">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.3833315472795" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-53.39009765625,18.8171540548898,106.7801953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load 4 MRR_tables to STG_DimProducts.Paths[OLE DB Source Output]"
+          TopLeft="491.638883243005,44.4444444186158">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.7055542912417"
+              Start="0,0"
+              End="0,22.2055542912417">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.2055542912417" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load 4 MRR_tables to STG_DimProducts.Paths[Lookup Match Output2]"
+          TopLeft="134.958333050832,325.272219493422">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="369.027772328506,42.4166663373513"
+              Start="0,0"
+              End="369.027772328506,34.9166663373513">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.2083331686757" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.2083331686757"
+                    Point2="0,21.2083331686757"
+                    Point3="4,21.2083331686757" />
+                  <mssgle:LineSegment
+                    End="365.027772328506,21.2083331686757" />
+                  <mssgle:CubicBezierSegment
+                    Point1="365.027772328506,21.2083331686757"
+                    Point2="369.027772328506,21.2083331686757"
+                    Point3="369.027772328506,25.2083331686757" />
+                  <mssgle:LineSegment
+                    End="369.027772328506,34.9166663373513" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="136.322499445503,26.2083331686757,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load 4 MRR_tables to STG_DimProducts.Paths[Lookup Match Output1]"
+          TopLeft="276.041662553325,304.188885559572">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-25.0833295024928,0"
+              Start="0,0"
+              End="-17.5833295024928,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-17.5833295024928,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-56.9830514699964,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load 4 MRR_tables to STG_DimProducts.Paths[Lookup Match Output]"
+          TopLeft="550.861102917542,305.819440030969">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-29.8194403642169,0"
+              Start="0,0"
+              End="-22.3194403642169,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-22.3194403642169,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-59.3511069008585,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load 4 MRR_tables to STG_DimProducts.Paths[Incorrect Section Records]"
+          TopLeft="377.874994384125,98.2999986401201">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-107.958328207955,0"
+              Start="0,0"
+              End="-100.458328207955,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-100.458328207955,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-107.508343791477,5,114.558359375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load 4 MRR_tables to STG_DimProducts.Paths[Derived Column Output2]"
+          TopLeft="503.923605365368,410.35555249744">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.7000000232463"
+              Start="0,0"
+              End="0,25.2000000232463">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.2000000232463" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Subcategory Name">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product Category Name">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load 4 MRR_tables to STG_DimProducts\Lookup Product SupplierName">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load ErrProducts">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load 4 MRR_tables to STG_DimProducts\Create &amp; Load STG_DimProducts">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load 4 MRR_tables to STG_DimProducts\MRR_Products Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

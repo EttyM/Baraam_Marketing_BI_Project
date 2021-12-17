@@ -1,0 +1,467 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/2/2021 9:45:56 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ETTYM"
+  DTS:CreatorName="ETTYM\Lenovo-PC"
+  DTS:DTSID="{85F4B131-AD51-493B-80E4-B5FF079653CB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="MRR_Source_SubCategories"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{A41D382C-3C8F-4EC0-B413-B3197336F208}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SubCategories Doc Source File]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{2412C453-ABAB-4FD4-A8B6-B4211FFE92F9}"
+      DTS:ObjectName="SubCategories Doc Source File">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::PP_Source_File] + "MIYUNSAB.DOC"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="FixedWidth"
+          DTS:LocaleID="1037"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="862"
+          DTS:ConnectionString="C:\Users\Lenovo-PC\Desktop\BI\Final Project\Documents\SourceFiles\MIYUNSAB.DOC">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="65"
+              DTS:MaximumWidth="65"
+              DTS:DataType="130"
+              DTS:ObjectName="SubCategoryName"
+              DTS:DTSID="{63FD2800-304D-4644-B8EA-7EBEF1C83E1A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="14"
+              DTS:MaximumWidth="14"
+              DTS:DataType="130"
+              DTS:ObjectName="SubCategoryID"
+              DTS:DTSID="{51ED09EA-2176-4FAF-94E9-A4BB59DD16A0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="3"
+              DTS:MaximumWidth="3"
+              DTS:DataType="129"
+              DTS:ObjectName="Column 2"
+              DTS:DTSID="{52CD6A6A-D9B8-44A3-A03B-74C60C7E13C3}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create &amp; Load MRR_SubCategories"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7524BD05-F606-4A76-8F5F-FFCBEDAEAED1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create &amp; Load MRR_SubCategories"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="MRR_SubCategories"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[MRR_SubCategories]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">ROWS_PER_BATCH = 10000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">100000</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories.Connections[OleDbConnection]"
+                  connectionManagerID="{841AE9A8-9773-4302-9CC9-CFE643E5CF84}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MRR_BaramMarketing]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories.Inputs[OLE DB Destination Input].Columns[SubCategoryName]"
+                      cachedDataType="wstr"
+                      cachedLength="65"
+                      cachedName="SubCategoryName"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories.Inputs[OLE DB Destination Input].ExternalColumns[SubCategoryName]"
+                      lineageId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Output].Columns[SubCategoryName]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories.Inputs[OLE DB Destination Input].Columns[SubCategoryID]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="SubCategoryID"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories.Inputs[OLE DB Destination Input].ExternalColumns[SubCategoryID]"
+                      lineageId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Output].Columns[SubCategoryID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories.Inputs[OLE DB Destination Input].ExternalColumns[SubCategoryName]"
+                      dataType="wstr"
+                      length="65"
+                      name="SubCategoryName" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories.Inputs[OLE DB Destination Input].ExternalColumns[SubCategoryID]"
+                      dataType="wstr"
+                      length="50"
+                      name="SubCategoryID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1037"
+              name="MyunSab Word Source File"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SubCategories Doc Source File]"
+                  connectionManagerRefId="Package.ConnectionManagers[SubCategories Doc Source File]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Output].Columns[SubCategoryName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Output].ExternalColumns[SubCategoryName]"
+                      length="65"
+                      lineageId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Output].Columns[SubCategoryName]"
+                      name="SubCategoryName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Output].Columns[SubCategoryID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Output].ExternalColumns[SubCategoryID]"
+                      length="14"
+                      lineageId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Output].Columns[SubCategoryID]"
+                      name="SubCategoryID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Output].ExternalColumns[SubCategoryName]"
+                      dataType="wstr"
+                      length="65"
+                      name="SubCategoryName" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Output].ExternalColumns[SubCategoryID]"
+                      dataType="wstr"
+                      length="14"
+                      name="SubCategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Output].ExternalColumns[Column 2]"
+                      codePage="862"
+                      dataType="str"
+                      length="3"
+                      name="Column 2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="862"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Create &amp; Load MRR_SubCategories.Paths[Flat File Source Output]"
+              endId="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate table MRR_SubCategories"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{CD332D62-96E9-4A0C-AE48-891AD6FC3BAC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate table MRR_SubCategories"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{841AE9A8-9773-4302-9CC9-CFE643E5CF84}"
+          SQLTask:SqlStatementSource="Truncate table MRR_SubCategories" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{6F3C0E94-39C5-4149-83E1-BE605FE6F116}"
+      DTS:From="Package\Truncate table MRR_SubCategories"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Create &amp; Load MRR_SubCategories" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="245.333333333334,42.6666666666667"
+          Id="Package\Create &amp; Load MRR_SubCategories"
+          TopLeft="261.874996097758,161.849997105897" />
+        <NodeLayout
+          Size="245.333333333334,42.6666666666667"
+          Id="Package\Truncate table MRR_SubCategories"
+          TopLeft="254.374996209517,71.4999987214804" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="380.791662820305,114.166665388147">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.6833317177495"
+              Start="0,0"
+              End="0,40.1833317177495">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.1833317177495" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Create &amp; Load MRR_SubCategories">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="205.333333333334,42.6666666666667"
+          Id="Package\Create &amp; Load MRR_SubCategories\MyunSab Word Source File"
+          TopLeft="202.499996982515,79.9499985703826" />
+        <NodeLayout
+          Size="194.666666666667,42.6666666666667"
+          Id="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories"
+          TopLeft="202.499996982515,181.349996757209" />
+        <EdgeLayout
+          Id="Package\Create &amp; Load MRR_SubCategories.Paths[Flat File Source Output]"
+          TopLeft="302.499996982515,122.616665237049">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.7333315201601"
+              Start="0,0"
+              End="0,51.2333315201601">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.2333315201601" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Create &amp; Load MRR_SubCategories\MRR_SubCategories">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

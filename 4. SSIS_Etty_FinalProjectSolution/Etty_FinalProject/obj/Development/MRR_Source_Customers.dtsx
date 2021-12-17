@@ -1,0 +1,574 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/9/2021 5:11:04 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ETTYM"
+  DTS:CreatorName="ETTYM\Lenovo-PC"
+  DTS:DTSID="{FA4BDBEA-7002-4F71-A437-1B3E8F74722A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="MRR_Source_Customers"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{243E2434-EDE1-4353-953D-D99CE1982F87}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Customers XSL Source File]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{3EFEC531-F081-409F-9825-DD3C3891B646}"
+      DTS:ObjectName="Customers XSL Source File">
+      <DTS:PropertyExpression
+        DTS:Name="ExcelFilePath">@[$Project::PP_Source_File] + "Customers.xls"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Lenovo-PC\Desktop\BI\Final Project\Documents\SourceFiles\Customers.xls;Extended Properties=&quot;EXCEL 8.0;HDR=NO&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create &amp; Load MRR_Customers"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{66716175-BFBC-4D5C-A22F-F1B86A34A8F9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create &amp; Load MRR_Customers"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Create &amp; Load MRR_Customers"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[MRR_Customers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">ROWS_PER_BATCH = 10000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">1000000</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Connections[OleDbConnection]"
+                  connectionManagerID="{841AE9A8-9773-4302-9CC9-CFE643E5CF84}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MRR_BaramMarketing]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                      cachedDataType="r8"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].Columns[CustomerName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CustomerName"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].ExternalColumns[CustomerName]"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[CustomerName]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].Columns[AgentID]"
+                      cachedDataType="r8"
+                      cachedName="AgentID"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].ExternalColumns[AgentID]"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[AgentID]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].Columns[AreaID]"
+                      cachedDataType="r8"
+                      cachedName="AreaID"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].ExternalColumns[AreaID]"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[AreaID]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].Columns[PaymentTerms]"
+                      cachedDataType="r8"
+                      cachedName="PaymentTerms"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].ExternalColumns[CustomerPaymentTerms]"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[PaymentTerms]" />
+                    <inputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].Columns[CustomerType]"
+                      cachedDataType="r8"
+                      cachedName="CustomerType"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].ExternalColumns[CustomerTypeID]"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[CustomerType]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      dataType="r8"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].ExternalColumns[CustomerName]"
+                      dataType="wstr"
+                      length="255"
+                      name="CustomerName" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].ExternalColumns[CustomerPaymentTerms]"
+                      dataType="r8"
+                      name="CustomerPaymentTerms" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].ExternalColumns[AgentID]"
+                      dataType="r8"
+                      name="AgentID" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].ExternalColumns[AreaID]"
+                      dataType="r8"
+                      name="AreaID" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input].ExternalColumns[CustomerTypeID]"
+                      dataType="r8"
+                      name="CustomerTypeID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Customers XSL Source File"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Customers XSL Source File]"
+                  connectionManagerRefId="Package.ConnectionManagers[Customers XSL Source File]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[CustomerID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].ExternalColumns[F1]"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[CustomerName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].ExternalColumns[F2]"
+                      length="255"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[CustomerName]"
+                      name="CustomerName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[PaymentTerms]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].ExternalColumns[F3]"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[PaymentTerms]"
+                      name="PaymentTerms"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[AgentID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].ExternalColumns[F4]"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[AgentID]"
+                      name="AgentID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[AreaID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].ExternalColumns[F5]"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[AreaID]"
+                      name="AreaID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[CustomerType]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].ExternalColumns[F6]"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[CustomerType]"
+                      name="CustomerType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[ToDelete]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].ExternalColumns[F7]"
+                      length="255"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].Columns[ToDelete]"
+                      name="ToDelete"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].ExternalColumns[F1]"
+                      dataType="r8"
+                      name="F1" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].ExternalColumns[F2]"
+                      dataType="wstr"
+                      length="255"
+                      name="F2" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].ExternalColumns[F3]"
+                      dataType="r8"
+                      name="F3" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].ExternalColumns[F4]"
+                      dataType="r8"
+                      name="F4" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].ExternalColumns[F5]"
+                      dataType="r8"
+                      name="F5" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].ExternalColumns[F6]"
+                      dataType="r8"
+                      name="F6" />
+                    <externalMetadataColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output].ExternalColumns[F7]"
+                      dataType="wstr"
+                      length="255"
+                      name="F7" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[F1]"
+                      dataType="r8"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[F1]"
+                      name="F1" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[F2]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[F2]"
+                      name="F2" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[F3]"
+                      dataType="r8"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[F3]"
+                      name="F3" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[F4]"
+                      dataType="r8"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[F4]"
+                      name="F4" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[F5]"
+                      dataType="r8"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[F5]"
+                      name="F5" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[F6]"
+                      dataType="r8"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[F6]"
+                      name="F6" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[F7]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[F7]"
+                      name="F7" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Create &amp; Load MRR_Customers.Paths[Excel Source Output]"
+              endId="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Create &amp; Load MRR_Customers\Customers XSL Source File.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate table MRR_Customers"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{905751E3-7F18-4588-8DEA-68BCBB7B3A5A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate table MRR_Customers"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{841AE9A8-9773-4302-9CC9-CFE643E5CF84}"
+          SQLTask:SqlStatementSource="truncate table MRR_Customers" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{A4E3F333-64E6-4279-94C0-4472E52B56D4}"
+      DTS:From="Package\Truncate table MRR_Customers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Create &amp; Load MRR_Customers" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="226.666666666667,42.6666666666667"
+          Id="Package\Create &amp; Load MRR_Customers"
+          TopLeft="236.12499656342,137.44999764055" />
+        <NodeLayout
+          Size="226.666666666667,42.6666666666667"
+          Id="Package\Truncate table MRR_Customers"
+          TopLeft="236.249996479601,55.249999012053" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="349.520829854844,97.9166656787197">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.5333319618304"
+              Start="0,0"
+              End="0,32.0333319618304">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.0333319618304" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Create &amp; Load MRR_Customers">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="220,42.6666666666667"
+          Id="Package\Create &amp; Load MRR_Customers\Customers XSL Source File"
+          TopLeft="274.999995902181,34.449999383986" />
+        <NodeLayout
+          Size="226.666666666667,42.6666666666667"
+          Id="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers"
+          TopLeft="274.374995911494,122.199997814894" />
+        <EdgeLayout
+          Id="Package\Create &amp; Load MRR_Customers.Paths[Excel Source Output]"
+          TopLeft="386.354162573504,77.1166660506527">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.083331764241"
+              Start="0,0"
+              End="0,37.583331764241">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.583331764241" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Create &amp; Load MRR_Customers\Create &amp; Load MRR_Customers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Create &amp; Load MRR_Customers\Customers XSL Source File">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

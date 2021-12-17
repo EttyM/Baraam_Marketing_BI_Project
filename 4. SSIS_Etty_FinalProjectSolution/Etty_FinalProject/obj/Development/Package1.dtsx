@@ -1,0 +1,2767 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/23/2021 8:24:06 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ETTYM"
+  DTS:CreatorName="ETTYM\Lenovo-PC"
+  DTS:DTSID="{70CBC997-926C-4BAE-984D-5C53BFFF37C4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{8A33FE1D-1368-402B-91E8-8733332897AD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D43AA4F6-E883-480A-9944-0698B148F323}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\CountRows for RowDiscount"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="CountRows for RowDiscount"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\CountRows for RowDiscount.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\CountRows for RowDiscount.Inputs[Aggregate Input 1].Columns[UniqueInvoiceID]"
+                      cachedDataType="i4"
+                      cachedName="UniqueInvoiceID"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[UniqueInvoiceID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\CountRows for RowDiscount.Inputs[Aggregate Input 1].Columns[DC_InvDiscount]"
+                      cachedDataType="cy"
+                      cachedName="DC_InvDiscount"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_InvDiscount]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1].Columns[CountRows]"
+                      dataType="ui8"
+                      lineageId="Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1].Columns[CountRows]"
+                      name="CountRows">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\0:invalid}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">2</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1].Columns[UniqueInvoiceID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1].Columns[UniqueInvoiceID]"
+                      name="UniqueInvoiceID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[UniqueInvoiceID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1].Columns[DC_InvDiscount]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1].Columns[DC_InvDiscount]"
+                      name="DC_InvDiscount">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_InvDiscount]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">6</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Create UniqueInvoiceID"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Create UniqueInvoiceID"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Create UniqueInvoiceID.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Create UniqueInvoiceID.Inputs[Derived Column Input].Columns[InvoiceDate]"
+                      cachedDataType="dbDate"
+                      cachedName="InvoiceDate"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Create UniqueInvoiceID.Inputs[Derived Column Input].Columns[InvoiceID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="InvoiceID"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[InvoiceID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Create UniqueInvoiceID.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Create UniqueInvoiceID.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Create UniqueInvoiceID.Outputs[Derived Column Output].Columns[UniqueInvoiceID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Create UniqueInvoiceID.Outputs[Derived Column Output].Columns[UniqueInvoiceID]"
+                      name="UniqueInvoiceID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)(#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[InvoiceID]} + (DT_WSTR,4)[YEAR](#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[InvoiceDate]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)(InvoiceID + (DT_WSTR,4)YEAR(InvoiceDate))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Create UniqueInvoiceID.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Create UniqueInvoiceID.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Create UniqueInvoiceID.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Create UniqueInvoiceID.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Create UniqueInvoiceID.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Create UniqueInvoiceID.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[DC_Quantity]"
+                      cachedDataType="cy"
+                      cachedName="DC_Quantity"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_Quantity]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Q]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Q]"
+                      name="Q"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_CY)(#{Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_Quantity]} &gt;= 0.0000 &amp;&amp; #{Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_Quantity]} &lt; 0.99 ? 1 : #{Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_Quantity]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_CY)(DC_Quantity &gt;= 0.0000 &amp;&amp; DC_Quantity &lt; 0.99 ? 1 : DC_Quantity)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Handle Data Types &amp; Error Values"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Handle Data Types &amp; Error Values"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Inputs[Derived Column Input].Columns[ProductID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductID"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Inputs[Derived Column Input].Columns[CustomerID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CustomerID"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Inputs[Derived Column Input].Columns[AgentID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="AgentID"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[AgentID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Inputs[Derived Column Input].Columns[Quantity]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Quantity"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Inputs[Derived Column Input].Columns[Price]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Price"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[Price]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Inputs[Derived Column Input].Columns[RowDiscount]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="RowDiscount"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[RowDiscount]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Inputs[Derived Column Input].Columns[InvDiscount]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="InvDiscount"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[InvDiscount]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_ProductID]"
+                      name="DC_ProductID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[ProductID]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)ProductID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_CustomerID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_CustomerID]"
+                      name="DC_CustomerID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[CustomerID]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)CustomerID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_AgentID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_AgentID]"
+                      name="DC_AgentID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[AgentID]} == "" || [ISNULL](#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[AgentID]}) ? @[$Project::PP_Unknown_Int] + 100 : (DT_I2)#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[AgentID]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">AgentID == "" || ISNULL(AgentID) ? @[$Project::PP_Unknown_Int] + 100 : (DT_I2)AgentID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_Quantity]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_Quantity]"
+                      name="DC_Quantity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_CY)(#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[Quantity]} == "               " || [TRIM](#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[Quantity]}) == "-" || [TRIM](#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[Quantity]}) == "0" ? "1" : [TRIM](#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[Quantity]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_CY)(Quantity == "               " || TRIM(Quantity) == "-" || TRIM(Quantity) == "0" ? "1" : TRIM(Quantity))</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_Price]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_Price]"
+                      name="DC_Price"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[TRIM](#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[Price]}) == "" || [ISNULL](#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[Price]}) || (DT_CY)#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[Price]} == 0.00 ? (DT_CY)@[$Project::PP_Unknown_Int] : (DT_CY)#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[Price]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(Price) == "" || ISNULL(Price) || (DT_CY)Price == 0.00 ? (DT_CY)@[$Project::PP_Unknown_Int] : (DT_CY)Price</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_RowDiscount]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_RowDiscount]"
+                      name="DC_RowDiscount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_CY)#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[RowDiscount]} &lt; 0.02 ? (DT_CY)0 : (DT_CY)#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[RowDiscount]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_CY)RowDiscount &lt; 0.02 ? (DT_CY)0 : (DT_CY)RowDiscount</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_InvDiscount]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_InvDiscount]"
+                      name="DC_InvDiscount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_CY)((DT_CY)#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[InvDiscount]} &lt; 0 ? 0 : (DT_CY)#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[InvDiscount]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_CY)((DT_CY)InvDiscount &lt; 0 ? 0 : (DT_CY)InvDiscount)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\InvoiceRowDiscount"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="InvoiceRowDiscount"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\InvoiceRowDiscount.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\InvoiceRowDiscount.Inputs[Derived Column Input].Columns[CountRows]"
+                      cachedDataType="ui8"
+                      cachedName="CountRows"
+                      lineageId="Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1].Columns[CountRows]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\InvoiceRowDiscount.Inputs[Derived Column Input].Columns[DC_InvDiscount]"
+                      cachedDataType="cy"
+                      cachedName="DC_InvDiscount"
+                      lineageId="Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1].Columns[DC_InvDiscount]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\InvoiceRowDiscount.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\InvoiceRowDiscount.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\InvoiceRowDiscount.Outputs[Derived Column Output].Columns[InvoiceRowDiscount]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\InvoiceRowDiscount.Outputs[Derived Column Output].Columns[InvoiceRowDiscount]"
+                      name="InvoiceRowDiscount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_CY)(#{Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1].Columns[DC_InvDiscount]} / #{Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1].Columns[CountRows]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_CY)(DC_InvDiscount / CountRows)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\InvoiceRowDiscount.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\InvoiceRowDiscount.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\InvoiceRowDiscount.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\InvoiceRowDiscount.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\InvoiceRowDiscount.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\InvoiceRowDiscount.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[UniqueInvoiceID]"
+                      cachedDataType="i4"
+                      cachedName="UniqueInvoiceID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[UniqueInvoiceID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[DC_Price]"
+                      cachedDataType="cy"
+                      cachedName="DC_Price"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_Price]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[DC_ProductID]"
+                      cachedDataType="i4"
+                      cachedName="DC_ProductID"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_ProductID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[DC_CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="DC_CustomerID"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_CustomerID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[DC_AgentID]"
+                      cachedDataType="i4"
+                      cachedName="DC_AgentID"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_AgentID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[InvoiceDate]"
+                      cachedDataType="dbDate"
+                      cachedName="InvoiceDate"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[InvoiceDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[DC_InvDiscount]"
+                      cachedDataType="cy"
+                      cachedName="DC_InvDiscount"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_InvDiscount]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[DC_RowDiscount]"
+                      cachedDataType="cy"
+                      cachedName="DC_RowDiscount"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_RowDiscount]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[DC_Quantity]"
+                      cachedDataType="cy"
+                      cachedName="DC_Quantity"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_Quantity]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[UniqueInvoiceID]"
+                      cachedDataType="i4"
+                      cachedName="UniqueInvoiceID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice1.Outputs[Sort Output].Columns[UniqueInvoiceID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[InvoiceRowDiscount]"
+                      cachedDataType="cy"
+                      cachedName="InvoiceRowDiscount"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice1.Outputs[Sort Output].Columns[InvoiceRowDiscount]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_Price]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_Price]"
+                      name="DC_Price">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[DC_Price]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UniqueInvoiceID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UniqueInvoiceID]"
+                      name="UniqueInvoiceID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[UniqueInvoiceID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_ProductID]"
+                      name="DC_ProductID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[DC_ProductID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_CustomerID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_CustomerID]"
+                      name="DC_CustomerID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[DC_CustomerID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_AgentID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_AgentID]"
+                      name="DC_AgentID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[DC_AgentID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[InvoiceDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[InvoiceDate]"
+                      name="InvoiceDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[InvoiceDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_InvDiscount]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_InvDiscount]"
+                      name="DC_InvDiscount">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[DC_InvDiscount]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_RowDiscount]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_RowDiscount]"
+                      name="DC_RowDiscount">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[DC_RowDiscount]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_Quantity]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_Quantity]"
+                      name="DC_Quantity">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[DC_Quantity]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[InvoiceRowDiscount]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[InvoiceRowDiscount]"
+                      name="InvoiceRowDiscount">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[InvoiceRowDiscount]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\MRR_Invoices"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="MRR_Invoices"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[MRR_Invoices]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  *
+FROM [MRR_BaramMarketing].[dbo].[MRR_Invoices]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\MRR_Invoices.Connections[OleDbConnection]"
+                  connectionManagerID="{841AE9A8-9773-4302-9CC9-CFE643E5CF84}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MRR_BaramMarketing]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[InvoiceID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[InvoiceID]"
+                      name="InvoiceID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      name="InvoiceDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[AgentID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[AgentID]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[AgentID]"
+                      name="AgentID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[OrderID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[OrderID]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[OrderID]"
+                      name="OrderID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[Price]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[Price]"
+                      name="Price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[RowDiscount]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[RowDiscount]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[RowDiscount]"
+                      name="RowDiscount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[InvDiscount]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[InvDiscount]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[InvDiscount]"
+                      name="InvDiscount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[InvoiceType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[InvoiceType]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[InvoiceType]"
+                      name="InvoiceType"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID]"
+                      dataType="wstr"
+                      length="50"
+                      name="InvoiceID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="50"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      dataType="dbDate"
+                      name="InvoiceDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[AgentID]"
+                      dataType="wstr"
+                      length="50"
+                      name="AgentID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[OrderID]"
+                      dataType="wstr"
+                      length="50"
+                      name="OrderID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      dataType="wstr"
+                      length="50"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                      dataType="wstr"
+                      length="50"
+                      name="Price" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[RowDiscount]"
+                      dataType="wstr"
+                      length="50"
+                      name="RowDiscount" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[InvDiscount]"
+                      dataType="wstr"
+                      length="50"
+                      name="InvDiscount" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].ExternalColumns[InvoiceType]"
+                      dataType="wstr"
+                      length="50"
+                      name="InvoiceType" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[InvoiceID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[InvoiceID]"
+                      name="InvoiceID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      name="InvoiceDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[AgentID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[AgentID]"
+                      name="AgentID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[OrderID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[OrderID]"
+                      name="OrderID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      name="Quantity" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[Price]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[Price]"
+                      name="Price" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[RowDiscount]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[RowDiscount]"
+                      name="RowDiscount" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[InvDiscount]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[InvDiscount]"
+                      name="InvDiscount" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[InvoiceType]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[InvoiceType]"
+                      name="InvoiceType" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Data Flow Task\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Multicast.Outputs[Multicast Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\Data Flow Task\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Multicast.Outputs[Multicast Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\Data Flow Task\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[merge1]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{8E292E39-2A6B-427E-B287-55183E7B623B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.STG_BaramMarketing]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DC_Price]"
+                      cachedDataType="cy"
+                      cachedName="DC_Price"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DC_Price]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_Price]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[UniqueInvoiceID]"
+                      cachedDataType="i4"
+                      cachedName="UniqueInvoiceID"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UniqueInvoiceID]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UniqueInvoiceID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DC_ProductID]"
+                      cachedDataType="i4"
+                      cachedName="DC_ProductID"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DC_ProductID]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_ProductID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DC_CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="DC_CustomerID"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DC_CustomerID]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_CustomerID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DC_AgentID]"
+                      cachedDataType="i4"
+                      cachedName="DC_AgentID"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DC_AgentID]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_AgentID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[InvoiceDate]"
+                      cachedDataType="dbDate"
+                      cachedName="InvoiceDate"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[InvoiceDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DC_InvDiscount]"
+                      cachedDataType="cy"
+                      cachedName="DC_InvDiscount"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DC_InvDiscount]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_InvDiscount]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DC_RowDiscount]"
+                      cachedDataType="cy"
+                      cachedName="DC_RowDiscount"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DC_RowDiscount]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_RowDiscount]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DC_Quantity]"
+                      cachedDataType="cy"
+                      cachedName="DC_Quantity"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DC_Quantity]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[DC_Quantity]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[InvoiceRowDiscount]"
+                      cachedDataType="cy"
+                      cachedName="InvoiceRowDiscount"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceRowDiscount]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[InvoiceRowDiscount]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DC_Price]"
+                      dataType="cy"
+                      name="DC_Price" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UniqueInvoiceID]"
+                      dataType="i4"
+                      name="UniqueInvoiceID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DC_ProductID]"
+                      dataType="i4"
+                      name="DC_ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DC_CustomerID]"
+                      dataType="i4"
+                      name="DC_CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DC_AgentID]"
+                      dataType="i4"
+                      name="DC_AgentID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                      dataType="dbDate"
+                      name="InvoiceDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DC_InvDiscount]"
+                      dataType="cy"
+                      name="DC_InvDiscount" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DC_RowDiscount]"
+                      dataType="cy"
+                      name="DC_RowDiscount" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DC_Quantity]"
+                      dataType="cy"
+                      name="DC_Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceRowDiscount]"
+                      dataType="cy"
+                      name="InvoiceRowDiscount" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Remove Dublicate Rows"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Remove Dublicate Rows"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Remove Dublicate Rows.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Inputs[Aggregate Input 1].Columns[InvoiceDate]"
+                      cachedDataType="dbDate"
+                      cachedName="InvoiceDate"
+                      lineageId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Inputs[Aggregate Input 1].Columns[DC_ProductID]"
+                      cachedDataType="i4"
+                      cachedName="DC_ProductID"
+                      lineageId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_ProductID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Inputs[Aggregate Input 1].Columns[DC_AgentID]"
+                      cachedDataType="i4"
+                      cachedName="DC_AgentID"
+                      lineageId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_AgentID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Inputs[Aggregate Input 1].Columns[DC_Quantity]"
+                      cachedDataType="cy"
+                      cachedName="DC_Quantity"
+                      lineageId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_Quantity]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Inputs[Aggregate Input 1].Columns[DC_Price]"
+                      cachedDataType="cy"
+                      cachedName="DC_Price"
+                      lineageId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_Price]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Inputs[Aggregate Input 1].Columns[DC_RowDiscount]"
+                      cachedDataType="cy"
+                      cachedName="DC_RowDiscount"
+                      lineageId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_RowDiscount]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Inputs[Aggregate Input 1].Columns[DC_InvDiscount]"
+                      cachedDataType="cy"
+                      cachedName="DC_InvDiscount"
+                      lineageId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_InvDiscount]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Inputs[Aggregate Input 1].Columns[UniqueInvoiceID]"
+                      cachedDataType="i4"
+                      cachedName="UniqueInvoiceID"
+                      lineageId="Package\Data Flow Task\Create UniqueInvoiceID.Outputs[Derived Column Output].Columns[UniqueInvoiceID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Inputs[Aggregate Input 1].Columns[DC_CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="DC_CustomerID"
+                      lineageId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_CustomerID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_Price]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_Price]"
+                      name="DC_Price">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_Price]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">5</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[UniqueInvoiceID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[UniqueInvoiceID]"
+                      name="UniqueInvoiceID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\Create UniqueInvoiceID.Outputs[Derived Column Output].Columns[UniqueInvoiceID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_ProductID]"
+                      name="DC_ProductID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_ProductID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_CustomerID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_CustomerID]"
+                      name="DC_CustomerID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_CustomerID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">6</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_AgentID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_AgentID]"
+                      name="DC_AgentID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_AgentID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">6</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[InvoiceDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[InvoiceDate]"
+                      name="InvoiceDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output].Columns[InvoiceDate]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">6</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_InvDiscount]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_InvDiscount]"
+                      name="DC_InvDiscount">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_InvDiscount]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">7</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_RowDiscount]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_RowDiscount]"
+                      name="DC_RowDiscount">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_RowDiscount]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_Quantity]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_Quantity]"
+                      name="DC_Quantity">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output].Columns[DC_Quantity]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort by UniqueInvoice"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort by UniqueInvoice"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort by UniqueInvoice.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Inputs[Sort Input].Columns[DC_Price]"
+                      cachedDataType="cy"
+                      cachedName="DC_Price"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_Price]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Inputs[Sort Input].Columns[UniqueInvoiceID]"
+                      cachedDataType="i4"
+                      cachedName="UniqueInvoiceID"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[UniqueInvoiceID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Inputs[Sort Input].Columns[DC_ProductID]"
+                      cachedDataType="i4"
+                      cachedName="DC_ProductID"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_ProductID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Inputs[Sort Input].Columns[DC_CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="DC_CustomerID"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_CustomerID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Inputs[Sort Input].Columns[DC_AgentID]"
+                      cachedDataType="i4"
+                      cachedName="DC_AgentID"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_AgentID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Inputs[Sort Input].Columns[InvoiceDate]"
+                      cachedDataType="dbDate"
+                      cachedName="InvoiceDate"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[InvoiceDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Inputs[Sort Input].Columns[DC_InvDiscount]"
+                      cachedDataType="cy"
+                      cachedName="DC_InvDiscount"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_InvDiscount]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Inputs[Sort Input].Columns[DC_RowDiscount]"
+                      cachedDataType="cy"
+                      cachedName="DC_RowDiscount"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_RowDiscount]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Inputs[Sort Input].Columns[DC_Quantity]"
+                      cachedDataType="cy"
+                      cachedName="DC_Quantity"
+                      lineageId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_Quantity]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_Price]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_Price]"
+                      name="DC_Price">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_Price]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[UniqueInvoiceID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[UniqueInvoiceID]"
+                      name="UniqueInvoiceID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[UniqueInvoiceID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_ProductID]"
+                      name="DC_ProductID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_ProductID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_CustomerID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_CustomerID]"
+                      name="DC_CustomerID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_CustomerID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_AgentID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_AgentID]"
+                      name="DC_AgentID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_AgentID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[InvoiceDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[InvoiceDate]"
+                      name="InvoiceDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[InvoiceDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_InvDiscount]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_InvDiscount]"
+                      name="DC_InvDiscount">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_InvDiscount]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_RowDiscount]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_RowDiscount]"
+                      name="DC_RowDiscount">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_RowDiscount]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_Quantity]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output].Columns[DC_Quantity]"
+                      name="DC_Quantity">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1].Columns[DC_Quantity]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort by UniqueInvoice1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort by UniqueInvoice1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort by UniqueInvoice1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice1.Inputs[Sort Input].Columns[CountRows]"
+                      cachedDataType="ui8"
+                      cachedName="CountRows"
+                      lineageId="Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1].Columns[CountRows]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice1.Inputs[Sort Input].Columns[UniqueInvoiceID]"
+                      cachedDataType="i4"
+                      cachedName="UniqueInvoiceID"
+                      lineageId="Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1].Columns[UniqueInvoiceID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice1.Inputs[Sort Input].Columns[DC_InvDiscount]"
+                      cachedDataType="cy"
+                      cachedName="DC_InvDiscount"
+                      lineageId="Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1].Columns[DC_InvDiscount]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice1.Inputs[Sort Input].Columns[InvoiceRowDiscount]"
+                      cachedDataType="cy"
+                      cachedName="InvoiceRowDiscount"
+                      lineageId="Package\Data Flow Task\InvoiceRowDiscount.Outputs[Derived Column Output].Columns[InvoiceRowDiscount]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort by UniqueInvoice1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice1.Outputs[Sort Output].Columns[CountRows]"
+                      dataType="ui8"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice1.Outputs[Sort Output].Columns[CountRows]"
+                      name="CountRows">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1].Columns[CountRows]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice1.Outputs[Sort Output].Columns[UniqueInvoiceID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice1.Outputs[Sort Output].Columns[UniqueInvoiceID]"
+                      name="UniqueInvoiceID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1].Columns[UniqueInvoiceID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice1.Outputs[Sort Output].Columns[DC_InvDiscount]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice1.Outputs[Sort Output].Columns[DC_InvDiscount]"
+                      name="DC_InvDiscount">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1].Columns[DC_InvDiscount]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by UniqueInvoice1.Outputs[Sort Output].Columns[InvoiceRowDiscount]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Sort by UniqueInvoice1.Outputs[Sort Output].Columns[InvoiceRowDiscount]"
+                      name="InvoiceRowDiscount">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\InvoiceRowDiscount.Outputs[Derived Column Output].Columns[InvoiceRowDiscount]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Aggregate Output 1]"
+              endId="Package\Data Flow Task\InvoiceRowDiscount.Inputs[Derived Column Input]"
+              name="Aggregate Output 1"
+              startId="Package\Data Flow Task\CountRows for RowDiscount.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Aggregate Output 11]"
+              endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+              name="Aggregate Output 1"
+              startId="Package\Data Flow Task\Remove Dublicate Rows.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task\Create UniqueInvoiceID.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output1]"
+              endId="Package\Data Flow Task\Remove Dublicate Rows.Inputs[Aggregate Input 1]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Create UniqueInvoiceID.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output2]"
+              endId="Package\Data Flow Task\Sort by UniqueInvoice1.Inputs[Sort Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\InvoiceRowDiscount.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output3]"
+              endId="Package\Data Flow Task\Multicast.Inputs[Multicast Input 1]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Merge Join Output]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Merge Join Output"
+              startId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Multicast Output 1]"
+              endId="Package\Data Flow Task\CountRows for RowDiscount.Inputs[Aggregate Input 1]"
+              name="Multicast Output 1"
+              startId="Package\Data Flow Task\Multicast.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Multicast Output 2]"
+              endId="Package\Data Flow Task\Sort by UniqueInvoice.Inputs[Sort Input]"
+              name="Multicast Output 2"
+              startId="Package\Data Flow Task\Multicast.Outputs[Multicast Output 2]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Handle Data Types &amp; Error Values.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\MRR_Invoices.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output]"
+              endId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort by UniqueInvoice.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output1]"
+              endId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort by UniqueInvoice1.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\Data Flow Task"
+          TopLeft="204.999996945262,70.8499987331033" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="240,42.6666666666667"
+          Id="Package\Data Flow Task\Handle Data Types &amp; Error Values"
+          TopLeft="39.3749994132668,90.3499983844162" />
+        <NodeLayout
+          Size="236,42.6666666666667"
+          Id="Package\Data Flow Task\MRR_Invoices"
+          TopLeft="44.374999338761,18.8499996629357" />
+        <NodeLayout
+          Size="194.666666666667,42.6666666666667"
+          Id="Package\Data Flow Task\Remove Dublicate Rows"
+          TopLeft="601.249991040677,93.5999983263016" />
+        <NodeLayout
+          Size="191.333333333334,43.3333333333334"
+          Id="Package\Data Flow Task\Create UniqueInvoiceID"
+          TopLeft="349.374994793907,91.6499983611703" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output1]"
+          TopLeft="540.70832812724,114.124998343736">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="60.5416629134368,0"
+              Start="0,0"
+              End="53.0416629134368,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="53.0416629134368,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="279.374999413267,112.499998372793">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="69.99999538064,0"
+              Start="0,0"
+              End="62.49999538064,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="62.49999538064,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="23.24999769032,5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="160.874999376014,61.5166663296024">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.8333320548138"
+              Start="0,0"
+              End="0,21.3333320548138">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.3333320548138" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="186.666666666667,42.6666666666667"
+          Id="Package\Data Flow Task\Multicast"
+          TopLeft="334.374995017424,264.449995664656" />
+        <NodeLayout
+          Size="213.333333333334,42"
+          Id="Package\Data Flow Task\CountRows for RowDiscount"
+          TopLeft="550.249992009252,344.116661633948" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Multicast Output 1]"
+          TopLeft="427.708328350758,307.116662331323">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="229.208330325161,36.9999993026255"
+              Start="0,0"
+              End="229.208330325161,29.4999993026255">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.4999996513128" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.4999996513128"
+                    Point2="0,18.4999996513128"
+                    Point3="4,18.4999996513128" />
+                  <mssgle:LineSegment
+                    End="225.208330325161,18.4999996513128" />
+                  <mssgle:CubicBezierSegment
+                    Point1="225.208330325161,18.4999996513128"
+                    Point2="229.208330325161,18.4999996513128"
+                    Point3="229.208330325161,22.4999996513128" />
+                  <mssgle:LineSegment
+                    End="229.208330325161,29.4999993026255" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="197.333333333334,42.6666666666667"
+          Id="Package\Data Flow Task\InvoiceRowDiscount"
+          TopLeft="559.458325165634,411.449995432198" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Aggregate Output 1]"
+          TopLeft="657.52082525411,386.116661633948">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.3333337982496"
+              Start="0,0"
+              End="0,17.8333337982496">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.8333337982496" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184,42.6666666666667"
+          Id="Package\Data Flow Task\Sort by UniqueInvoice"
+          TopLeft="67.2916659122954,383.933329567512" />
+        <NodeLayout
+          Size="189.333333333334,42.6666666666667"
+          Id="Package\Data Flow Task\Sort by UniqueInvoice1"
+          TopLeft="556.041658629353,483.283328184386" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Multicast Output 2]"
+          TopLeft="397.93055057298,307.116662331323">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-238.638884660685,76.8166672361889"
+              Start="0,0"
+              End="-238.638884660685,69.3166672361889">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.1183666140935" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.1183666140935"
+                    Point2="0,31.1183666140935"
+                    Point3="-4,31.1183666140935" />
+                  <mssgle:LineSegment
+                    End="-234.638884660685,31.1183666140935" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-234.638884660685,31.1183666140935"
+                    Point2="-238.638884660685,31.1183666140935"
+                    Point3="-238.638884660685,35.1183666140935" />
+                  <mssgle:LineSegment
+                    End="-238.638884660685,69.3166672361889" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output2]"
+          TopLeft="654.41665856416,454.116662098865">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.1666660855214"
+              Start="0,0"
+              End="0,21.6666660855214">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.6666660855214" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="131.333333333334,42.6666666666667"
+          Id="Package\Data Flow Task\Merge Join"
+          TopLeft="321.791662149752,476.883329765101" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output]"
+          TopLeft="159.291665912295,426.599996234178">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="228.166662904124,50.2833335309226"
+              Start="0,0"
+              End="228.166662904124,42.7833335309226">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.1416667654613" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.1416667654613"
+                    Point2="0,25.1416667654613"
+                    Point3="4,25.1416667654613" />
+                  <mssgle:LineSegment
+                    End="224.166662904124,25.1416667654613" />
+                  <mssgle:CubicBezierSegment
+                    Point1="224.166662904124,25.1416667654613"
+                    Point2="228.166662904124,25.1416667654613"
+                    Point3="228.166662904124,29.1416667654613" />
+                  <mssgle:LineSegment
+                    End="228.166662904124,42.7833335309226" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output1]"
+          TopLeft="556.041658629353,501.416662308077">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-102.916663146267,0"
+              Start="0,0"
+              End="-95.4166631462673,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-95.4166631462673,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="298.666662494342,555.999995350838" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Merge Join Output]"
+          TopLeft="386.06249565538,519.549996431768">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.4499989190699"
+              Start="0,0"
+              End="0,28.9499989190699">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.9499989190699" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Data Flow Task\Derived Column"
+          TopLeft="616.874990807846,175.816665144066" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Aggregate Output 11]"
+          TopLeft="696.395824257595,136.266664992968">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.5500001510978"
+              Start="0,0"
+              End="0,32.0500001510978">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.0500001510978" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,8.02500007554889,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output3]"
+          TopLeft="694.20832414118,218.483331810733">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-266.499995790422,45.9666638539235"
+              Start="0,0"
+              End="-266.499995790422,38.4666638539235">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.9833319269617" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.9833319269617"
+                    Point2="0,22.9833319269617"
+                    Point3="-4,22.9833319269617" />
+                  <mssgle:LineSegment
+                    End="-262.499995790422,22.9833319269617" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-262.499995790422,22.9833319269617"
+                    Point2="-266.499995790422,22.9833319269617"
+                    Point3="-266.499995790422,26.9833319269617" />
+                  <mssgle:LineSegment
+                    End="-266.499995790422,38.4666638539235" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-141.249997895211,27.9833319269617,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\MRR_Invoices">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

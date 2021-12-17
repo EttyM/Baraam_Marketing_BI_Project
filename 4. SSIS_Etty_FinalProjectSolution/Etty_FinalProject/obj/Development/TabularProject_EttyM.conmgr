@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="TabularProject_EttyM"
+  DTS:DTSID="{E4B922CB-881E-4AAA-A2F4-0228E5D12F37}"
+  DTS:CreationName="MSOLAP100">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::PP_ConnectionString_SSAS]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=localhost;PROVIDER=MSOLAP;Impersonation Level=Impersonate;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
